@@ -44,19 +44,20 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           {/* Logo */}
+          {/* Logo */}
           <a href="#" className="flex-shrink-0 flex items-center group cursor-pointer" onClick={closeMenu}>
-             <div className="flex flex-col items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                <span className="font-display font-bold text-4xl tracking-widest leading-none text-text-main-light dark:text-text-main-dark group-hover:opacity-80 transition-opacity">XPACE</span>
-                <span className="font-sans text-[0.55rem] font-bold tracking-[0.35em] leading-tight text-text-main-light dark:text-text-main-dark uppercase mt-1 w-full text-center group-hover:text-primary transition-colors">Escola de Dança</span>
-             </div>
+            <div className="flex flex-col items-center justify-center transition-transform duration-300 group-hover:scale-105">
+              <img src="/images/logo/XPACE PERFIL PRETO.png" alt="XPACE Logo" className="h-10 w-auto dark:hidden" />
+              <img src="/images/logo/XPACE PERFIL BRANCO.png" alt="XPACE Logo" className="h-10 w-auto hidden dark:block" />
+            </div>
           </a>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navLinks.map((link) => (
-              <a 
+              <a
                 key={link.name}
-                href={link.href} 
+                href={link.href}
                 className="relative group py-1"
               >
                 <span className="text-lg xl:text-xl font-tech tracking-widest text-text-main-light dark:text-text-main-dark transition-colors duration-300 group-hover:text-primary">
@@ -65,7 +66,7 @@ export const Navbar: React.FC = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>
               </a>
             ))}
-            
+
             <a href="#contact" className="relative group overflow-hidden rounded-sm ml-4">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-cyber-pink rounded-sm blur opacity-75 group-hover:opacity-100 transition duration-500 group-hover:duration-200"></div>
               <div className="relative px-6 py-2 bg-black text-white dark:bg-white dark:text-black clip-button font-tech text-xl tracking-widest transition-all duration-300 flex items-center gap-2 group-hover:bg-opacity-90 group-hover:scale-[1.02]">
@@ -74,7 +75,7 @@ export const Navbar: React.FC = () => {
               </div>
             </a>
 
-            <button 
+            <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-text-main-light dark:text-text-main-dark hover:rotate-12 transform duration-300"
             >
@@ -85,7 +86,7 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-4">
-             <button 
+            <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-text-main-light dark:text-text-main-dark"
             >
@@ -103,10 +104,10 @@ export const Navbar: React.FC = () => {
       <div className={`lg:hidden absolute top-24 left-0 w-full bg-background-light dark:bg-background-dark border-b border-gray-200 dark:border-gray-800 transition-all duration-300 ease-in-out overflow-hidden shadow-2xl ${isMenuOpen ? 'max-h-screen opacity-100 py-8' : 'max-h-0 opacity-0 py-0'}`}>
         <div className="flex flex-col items-center space-y-6">
           {navLinks.map((link) => (
-            <a 
+            <a
               key={link.name}
-              href={link.href} 
-              onClick={closeMenu} 
+              href={link.href}
+              onClick={closeMenu}
               className="text-2xl font-tech tracking-widest text-text-main-light dark:text-text-main-dark hover:text-primary transition-colors hover:translate-x-2 duration-300"
             >
               {link.name}
