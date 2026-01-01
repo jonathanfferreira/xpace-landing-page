@@ -54,7 +54,7 @@ export const Performances: React.FC = () => {
                         </span>
                         <h2 className="font-display text-5xl md:text-8xl font-black mb-6 leading-none">
                             MOVIMENTO <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-cyber-pink italic">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-cyber-pink italic pr-4">
                                 EM FOCO
                             </span>
                         </h2>

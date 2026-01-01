@@ -17,6 +17,7 @@ import { FAQ } from './components/FAQ';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 import { Preloader } from './components/Preloader';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,6 +50,7 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 };
