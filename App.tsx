@@ -6,6 +6,7 @@ import { Manifesto } from './components/Manifesto';
 import { Values } from './components/Values';
 import { Features } from './components/Features';
 import { Awards } from './components/Awards';
+import { Performances } from './components/Performances';
 import { About } from './components/About';
 import { Schedule } from './components/Schedule';
 import { Gallery } from './components/Gallery';
@@ -37,6 +38,7 @@ const App: React.FC = () => {
         <Values />
         <Features />
         <Awards />
+        <Performances />
         <Gallery />
         <Schedule />
         <Teachers />
