@@ -1,52 +1,71 @@
 import React from 'react';
 
-const images = [
+type GalleryItem = {
+  type: 'image' | 'spacer';
+  src?: string;
+  alt?: string;
+  span: string;
+  category?: string;
+};
+
+const items: GalleryItem[] = [
+  // Row 1 & 2
   {
+    type: 'image',
     src: "/images/gallery/IMG_4858.JPG",
     alt: "XPACE Moment 1",
-    span: "md:col-span-2 md:row-span-2",
+    span: "md:col-span-2 md:row-span-2", // Large block left (Cols 1-2, Rows 1-2)
     category: "SHOWS"
   },
   {
-    src: "/images/gallery/IMG_6202.JPG",
-    alt: "XPACE Moment 2",
-    span: "md:col-span-1 md:row-span-1",
-    category: "AULAS"
-  },
-  {
+    type: 'image',
     src: "/images/gallery/IMG_5244.JPG",
     alt: "XPACE Moment 3",
-    span: "md:col-span-1 md:row-span-2",
+    span: "md:col-span-1 md:row-span-2", // Tall item (Col 3, Rows 1-2)
     category: "ESTÚDIO"
   },
   {
-    src: "/images/gallery/IMG_4860.JPG",
-    alt: "XPACE Moment 4",
-    span: "md:col-span-1 md:row-span-1",
-    category: "VIBE"
+    type: 'image',
+    src: "/images/gallery/IMG_6202.JPG",
+    alt: "XPACE Moment 2",
+    span: "md:col-span-1 md:row-span-1", // Top Right (Col 4, Row 1)
+    category: "AULAS"
   },
   {
+    type: 'image',
+    src: "/images/gallery/IMG_4860.JPG",
+    alt: "XPACE Moment 4",
+    span: "md:col-span-1 md:row-span-1", // Mid Right (Col 4, Row 2)
+    category: "VIBE"
+  },
+
+  // Row 3
+  {
+    type: 'image',
     src: "/images/gallery/IMG_8694.JPG",
     alt: "XPACE Moment 5",
     span: "md:col-span-1 md:row-span-1",
     category: "BATALHAS"
   },
   {
+    type: 'image',
     src: "/images/gallery/IMG_4864.JPG",
     alt: "XPACE Moment 6",
     span: "md:col-span-1 md:row-span-1",
     category: "EVENTS"
   },
   {
+    type: 'image',
     src: "/images/gallery/IMG_4865.JPG",
     alt: "XPACE Moment 7",
     span: "md:col-span-1 md:row-span-1",
     category: "COMMUNITY"
   },
   {
+    type: 'image',
     src: "/images/gallery/IMG_6201.JPG",
     alt: "XPACE Moment 8",
-    span: "md:col-span-2 md:row-span-1",
+    span: "md:col-span-1 md:row-span-1", // Changed from 2x1 to 1x1 to fit grid
     category: "HIGHLIGHTS"
   }
 ];
@@ -67,31 +86,37 @@ export const Gallery: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[300px] gap-6">
-          {images.map((img, index) => (
-            <div key={index} className={`relative group overflow-hidden ${img.span} bg-gray-200 dark:bg-gray-900 rounded-lg`}>
-              {/* Image */}
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 group-hover:grayscale-0 grayscale md:grayscale"
-              />
+        <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[250px] gap-6">
+          {items.map((item, index) => {
+            if (item.type === 'spacer') {
+              return <div key={index} className={`hidden md:block ${item.span}`}></div>;
+            }
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"></div>
+            return (
+              <div key={index} className={`relative group overflow-hidden ${item.span} bg-gray-200 dark:bg-gray-900 rounded-lg min-h-[250px]`}>
+                {/* Image */}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 group-hover:grayscale-0 grayscale md:grayscale"
+                />
 
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <span className="bg-white dark:bg-black text-black dark:text-white px-2 py-1 font-tech tracking-widest text-xs font-bold uppercase">
-                  {img.category}
-                </span>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"></div>
+
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="bg-white dark:bg-black text-black dark:text-white px-2 py-1 font-tech tracking-widest text-xs font-bold uppercase">
+                    {item.category}
+                  </span>
+                </div>
+
+                {/* Borders (Corner accents) */}
+                <div className="absolute top-4 right-4 w-2 h-2 border-t-2 border-r-2 border-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute bottom-4 left-4 w-2 h-2 border-b-2 border-l-2 border-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
-
-              {/* Borders (Corner accents) */}
-              <div className="absolute top-4 right-4 w-2 h-2 border-t-2 border-r-2 border-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="absolute bottom-4 left-4 w-2 h-2 border-b-2 border-l-2 border-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-12 flex justify-center">

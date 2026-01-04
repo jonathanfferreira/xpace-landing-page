@@ -9,7 +9,7 @@ export const CTA: React.FC = () => {
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
 
         <h2 className="font-display text-5xl font-black mb-6 relative z-10">
-          Primeira Aula <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyber-pink">Grátis</span>
+          PRIMEIRA AULA <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyber-pink">GRATUITA</span>
         </h2>
 
         <p className="font-body text-gray-400 text-lg mb-10 max-w-md tracking-wide relative z-10">

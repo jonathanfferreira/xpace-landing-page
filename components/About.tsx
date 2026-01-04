@@ -30,9 +30,8 @@ export const About: React.FC = () => {
                             <span className="font-tech text-primary tracking-widest font-bold uppercase">Nossa Trajetória</span>
                         </div>
 
-                        <h2 className="font-display text-4xl md:text-5xl font-black mb-8 leading-none tracking-tighter uppercase">
-                            De um Sonho à <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyber-pink">Maior Referência</span>
+                        <h2 className="font-display text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase">
+                            XPACE: ONDE A TÉCNICA ENCONTRA A PAIXÃO E O <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyber-pink">TALENTO VIRA HISTÓRIA.</span>
                         </h2>
 
                         <div className="space-y-6 text-gray-600 dark:text-gray-300 font-body text-sm md:text-base leading-relaxed text-justify">
@@ -46,12 +45,6 @@ export const About: React.FC = () => {
                                 Em <strong>2025</strong>, consolidamos nossa expansão, saltando de 60 para mais de 110 alunos e estruturando a escola em dois pilares fundamentais: <strong>XPACE Escola de Dança</strong> (ensino e formação) e <strong>XPACE Dance Company</strong> (alta performance).
                             </p>
                         </div>
-
-                        <div className="mt-8 p-6 bg-surface-light dark:bg-black border border-gray-200 dark:border-gray-800 rounded-xl">
-                            <p className="font-display text-xl md:text-2xl font-black text-center text-text-main-light dark:text-text-main-dark italic">
-                                "Xpace: Onde a técnica encontra a paixão e o talento vira história."
-                            </p>
-                        </div>
                     </div>
                 </div>
 
@@ -63,9 +56,6 @@ export const About: React.FC = () => {
                         {/* Alceu */}
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-cyber-pink transition-colors duration-300 group">
                             <div className="mb-6">
-                                <div className="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mb-4 overflow-hidden">
-                                    <div className="w-full h-full flex items-center justify-center font-display font-black text-2xl text-gray-400">AM</div>
-                                </div>
                                 <h4 className="font-display text-2xl font-black uppercase mb-1">Alceu de Miranda Jr</h4>
                                 <p className="font-tech text-xs text-cyber-pink font-bold tracking-widest uppercase">Gestão Financeira</p>
                             </div>
@@ -77,9 +67,6 @@ export const About: React.FC = () => {
                         {/* Jhonney */}
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-secondary transition-colors duration-300 group">
                             <div className="mb-6">
-                                <div className="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mb-4 overflow-hidden">
-                                    <div className="w-full h-full flex items-center justify-center font-display font-black text-2xl text-gray-400">JH</div>
-                                </div>
                                 <h4 className="font-display text-2xl font-black uppercase mb-1">Jhonney</h4>
                                 <p className="font-tech text-xs text-secondary font-bold tracking-widest uppercase">Direção Artística</p>
                             </div>
@@ -91,9 +78,6 @@ export const About: React.FC = () => {
                         {/* Ruan */}
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors duration-300 group">
                             <div className="mb-6">
-                                <div className="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mb-4 overflow-hidden">
-                                    <div className="w-full h-full flex items-center justify-center font-display font-black text-2xl text-gray-400">RA</div>
-                                </div>
                                 <h4 className="font-display text-2xl font-black uppercase mb-1">Ruan Amorim</h4>
                                 <p className="font-tech text-xs text-primary font-bold tracking-widest uppercase">Administrativo e Projetos</p>
                             </div>

@@ -31,12 +31,12 @@ export const Navbar: React.FC = () => {
   };
 
   const navLinks = [
+    { name: 'Sobre', href: '#about' },
     { name: 'O Universo', href: '#features' },
-    { name: 'Premiações', href: '#awards' },
-    { name: 'Cinema', href: '#performances' },
-    { name: 'Galeria', href: '#gallery' },
-    { name: 'Horários', href: '#schedule' },
     { name: 'Equipe', href: '#teachers' },
+    { name: 'Cinema', href: '#performances' },
+    { name: 'Horários', href: '#schedule' },
+    { name: 'Aluguel', href: '#rental' },
     { name: 'Planos', href: '#plans' },
   ];
 

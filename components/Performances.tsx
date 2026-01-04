@@ -4,6 +4,14 @@ import { Play, Trophy, Star, ExternalLink } from 'lucide-react';
 
 const performances = [
     {
+        title: "XPACEFLIX - O Espetáculo",
+        description: "A magia do cinema traduzida em dança. Nosso espetáculo oficial de final de ano criando coreografias inspiradas em filmes.",
+        youtubeId: "nscO5GYalsI",
+        achievement: "PRODUÇÃO ORIGINAL",
+        category: "ESPETÁCULO",
+        color: "#ffffff"
+    },
+    {
         title: "Avançado - Festival de Julho",
         description: "Único grupo de Danças Urbanas de Joinville a conquistar dois 2º lugares na categoria Avançado em 2025.",
         youtubeId: "TipBGmO_PzY",
@@ -81,8 +89,8 @@ export const Performances: React.FC = () => {
                     </motion.div>
                 </div>
 
-                {/* Video Cards Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Video Cards Grid - Updated to 2 columns for 4 items */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {performances.map((perf, index) => (
                         <motion.div
                             key={index}

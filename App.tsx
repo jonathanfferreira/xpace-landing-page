@@ -9,6 +9,7 @@ import { Awards } from './components/Awards';
 import { Performances } from './components/Performances';
 import { About } from './components/About';
 import { Schedule } from './components/Schedule';
+import { Rental } from './components/Rental';
 import { Gallery } from './components/Gallery';
 import { Teachers } from './components/Teachers';
 import { Pricing } from './components/Pricing';
@@ -16,6 +17,7 @@ import { Testimonials } from './components/Testimonials';
 import { FAQ } from './components/FAQ';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
+import { Location } from './components/Location';
 import { Preloader } from './components/Preloader';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 
@@ -37,16 +39,18 @@ const App: React.FC = () => {
         <Manifesto />
         <About />
         <Values />
+        <Teachers />
         <Features />
         <Awards />
         <Performances />
         <Gallery />
         <Schedule />
-        <Teachers />
+        <Rental />
         <Pricing />
         <Testimonials />
-        <FAQ />
         <CTA />
+        <FAQ />
+        <Location />
       </main>
 
       <Footer />

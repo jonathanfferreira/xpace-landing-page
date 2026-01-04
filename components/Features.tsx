@@ -41,9 +41,9 @@ export const Features: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-40 bg-surface-light dark:bg-surface-dark relative">
+    <section id="features" className="py-20 bg-surface-light dark:bg-surface-dark relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-24 text-center">
+        <div className="mb-12 text-center">
           <h2 className="font-display text-4xl md:text-5xl font-black mb-4 uppercase">O Universo XPACE</h2>
           <div className="h-1 w-24 bg-gradient-to-r from-primary via-secondary to-tertiary mx-auto"></div>
         </div>

@@ -32,7 +32,7 @@ export const Values: React.FC = () => {
     <section className="bg-black text-white relative z-20">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {values.map((item, index) => (
-          <div key={index} className="group relative h-[50vh] min-h-[350px] overflow-hidden border border-gray-900 bg-neutral-950 transition-colors duration-500 hover:bg-neutral-900">
+          <div key={index} className="group relative h-[25vh] min-h-[200px] overflow-hidden border border-gray-900 bg-neutral-950 transition-colors duration-500 hover:bg-neutral-900">
 
             {/* Subtle Gradient Background Effect on Hover */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
@@ -40,7 +40,7 @@ export const Values: React.FC = () => {
             {/* Content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
               <h3
-                className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase transition-all duration-500 text-transparent group-hover:text-white group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] select-none break-all sm:break-normal"
+                className="font-display text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tighter uppercase transition-all duration-500 text-transparent group-hover:text-white group-hover:scale-105 select-none break-words w-full"
                 style={{ WebkitTextStroke: '1px white' }}
               >
                 {item.title}

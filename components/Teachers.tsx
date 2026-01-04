@@ -16,7 +16,7 @@ const teachersData: Teacher[] = [
     role: "Hip Hop",
     roleColor: "primary",
     description: "Hip Hop",
-    image: "/images/teachers/alissonfelipe.jpg"
+    image: "/images/teachers/alissonfelipe.webp"
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const teachersData: Teacher[] = [
     role: "Jazz & Contemporâneo",
     roleColor: "tertiary",
     description: "Jazz & Contemporâneo",
-    image: "/images/teachers/bianca.jpg"
+    image: "/images/teachers/bianca.webp"
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const teachersData: Teacher[] = [
     role: "Vogue • Jazz Funk",
     roleColor: "cyber-pink",
     description: "Vogue • Jazz Funk • Waacking",
-    image: "/images/teachers/dil.jpg"
+    image: "/images/teachers/dil.webp"
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const teachersData: Teacher[] = [
     role: "Heels & Jazz Funk",
     roleColor: "secondary",
     description: "Heels & Jazz Funk",
-    image: "/images/teachers/eduarda.jpg"
+    image: "/images/teachers/eduarda.webp"
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ const teachersData: Teacher[] = [
     role: "Vogue & Waacking",
     roleColor: "primary",
     description: "Vogue & Waacking",
-    image: "/images/teachers/engels.jpg"
+    image: "/images/teachers/engels.webp"
   },
   {
     id: 6,
@@ -56,7 +56,7 @@ const teachersData: Teacher[] = [
     role: "Hip Hop",
     roleColor: "secondary",
     description: "Hip Hop",
-    image: "/images/teachers/isis.jpg"
+    image: "/images/teachers/isis.webp"
   },
   {
     id: 7,
@@ -64,7 +64,7 @@ const teachersData: Teacher[] = [
     role: "Dancehall & Hip Hop",
     roleColor: "tertiary",
     description: "Dancehall & Hip Hop",
-    image: "/images/teachers/jhonney.jpg"
+    image: "/images/teachers/jhonney.webp"
   },
   {
     id: 8,
@@ -72,7 +72,7 @@ const teachersData: Teacher[] = [
     role: "Hip Hop & House",
     roleColor: "primary",
     description: "Hip Hop & House",
-    image: "/images/teachers/loren.jpg"
+    image: "/images/teachers/loren.webp"
   },
   {
     id: 9,
@@ -126,7 +126,7 @@ const TeacherCard: React.FC<{
 
 export const Teachers: React.FC = () => {
   return (
-    <section id="teachers" className="py-40 bg-surface-light dark:bg-surface-dark relative">
+    <section id="teachers" className="py-20 bg-surface-light dark:bg-surface-dark relative">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
@@ -135,7 +135,7 @@ export const Teachers: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
           <div>
-            <h2 className="font-display text-6xl md:text-8xl font-black tracking-tighter mb-2">XPACE <br /> TEAM</h2>
+            <h2 className="font-display text-4xl md:text-8xl font-black tracking-tighter mb-2 uppercase">Professores</h2>
             <div className="h-2 w-20 bg-gradient-to-r from-primary to-cyber-pink"></div>
           </div>
           <div className="text-left md:text-right max-w-md">
