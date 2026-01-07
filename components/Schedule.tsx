@@ -28,6 +28,7 @@ const scheduleData: WeeklySchedule = {
     { time: "20:00", activity: "Jazz Iniciante", room: "XCORE" },
     { time: "20:00", activity: "Acrobacia", room: "XTAGE" },
     { time: "20:00", activity: "Jiu Jitsu", room: "XTAGE" },
+    { time: "20:00", activity: "Muay Thai", room: "XLAB" },
     { time: "21:00", activity: "Jazz", room: "XPERIENCE" },
   ],
   "TERÇA": [
@@ -59,6 +60,7 @@ const scheduleData: WeeklySchedule = {
     { time: "20:00", activity: "Jazz Iniciante", room: "XCORE" },
     { time: "20:00", activity: "Acrobacia", room: "XTAGE" },
     { time: "20:00", activity: "Jiu Jitsu", room: "XTAGE" },
+    { time: "20:00", activity: "Muay Thai", room: "XLAB" },
     { time: "21:00", activity: "Jazz", room: "XPERIENCE" },
   ],
   "QUINTA": [
@@ -148,8 +150,8 @@ export const Schedule: React.FC = () => {
               key={day}
               onClick={() => setActiveTab(day)}
               className={`px-6 py-3 rounded-full font-bold text-sm tracking-widest whitespace-nowrap transition-all duration-300 ${activeTab === day
-                  ? 'bg-black text-white dark:bg-white dark:text-black shadow-[0_0_15px_rgba(124,58,237,0.5)]'
-                  : 'border border-gray-300 dark:border-gray-800 text-gray-500 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-white'
+                ? 'bg-black text-white dark:bg-white dark:text-black shadow-[0_0_15px_rgba(124,58,237,0.5)]'
+                : 'border border-gray-300 dark:border-gray-800 text-gray-500 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-white'
                 }`}
             >
               {day}
