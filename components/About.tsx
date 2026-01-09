@@ -57,7 +57,7 @@ export const About: React.FC = () => {
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-cyber-pink transition-colors duration-300 group">
                             <div className="mb-6">
                                 <h4 className="font-display text-2xl font-black uppercase mb-1">Alceu de Miranda Jr</h4>
-                                <p className="font-tech text-xs text-cyber-pink font-bold tracking-widest uppercase">Gestão Financeira</p>
+                                <p className="font-tech text-xs text-cyber-pink font-bold tracking-widest uppercase">Diretor Financeiro e Administrativo</p>
                             </div>
                             <p className="font-body text-sm text-gray-500 leading-relaxed">
                                 O alicerce da organização. Comanda toda a administração financeira e gestão interna, garantindo a sustentabilidade e organização do negócio.
@@ -68,10 +68,10 @@ export const About: React.FC = () => {
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-secondary transition-colors duration-300 group">
                             <div className="mb-6">
                                 <h4 className="font-display text-2xl font-black uppercase mb-1">Jhonney</h4>
-                                <p className="font-tech text-xs text-secondary font-bold tracking-widest uppercase">Direção Artística</p>
+                                <p className="font-tech text-xs text-secondary font-bold tracking-widest uppercase">Diretor Artístico e Marketing</p>
                             </div>
                             <p className="font-body text-sm text-gray-500 leading-relaxed">
-                                A alma criativa da escola. Gerencia a direção artística completa, cria coreografias premiadas, roteiriza espetáculos e gere o corpo docente.
+                                A alma criativa da escola. Gerencia a direção artística completa e o marketing, cria coreografias premiadas, roteiriza espetáculos e gere o corpo docente.
                             </p>
                         </div>
 
@@ -79,10 +79,10 @@ export const About: React.FC = () => {
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors duration-300 group">
                             <div className="mb-6">
                                 <h4 className="font-display text-2xl font-black uppercase mb-1">Ruan Amorim</h4>
-                                <p className="font-tech text-xs text-primary font-bold tracking-widest uppercase">Administrativo e Projetos</p>
+                                <p className="font-tech text-xs text-primary font-bold tracking-widest uppercase">Fundador, Diretor Geral e Artístico</p>
                             </div>
                             <p className="font-body text-sm text-gray-500 leading-relaxed">
-                                Responsável pela visão macro e direção coreográfica. Busca novas parcerias e garante que a escola esteja sempre inovando e conectada com o mercado.
+                                Fundador e visionário. Responsável pela direção geral, artística, coreográfica e gestão de projetos. Busca novas parcerias e garante a inovação constante e conexão com o mercado.
                             </p>
                         </div>
                     </div>

@@ -1,34 +1,38 @@
 import React, { useState } from 'react';
+import { Send } from 'lucide-react';
 
 export const ContactForm: React.FC = () => {
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setStatus("submitting");
 
         const form = e.currentTarget;
-        const data = new FormData(form);
+        const formData = new FormData(form);
+        const name = formData.get('name') as string;
+        const email = formData.get('email') as string;
+        const message = formData.get('message') as string;
 
-        try {
-            const res = await fetch("https://formspree.io/f/xjkvzvgz", {
-                method: "POST",
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (res.ok) {
-                setStatus("success");
-                form.reset();
-            } else {
-                setStatus("error");
-            }
-        } catch (err) {
-            console.error(err);
+        // Validation
+        if (!name || !email || !message) {
             setStatus("error");
+            return;
         }
+
+        // WhatsApp Logic
+        const phoneNumber = "554791700812";
+        const text = `*NOVA MENSAGEM DO SITE (FALE CONOSCO)*\n\n*Nome:* ${name}\n*Email:* ${email}\n\n*Mensagem:*\n${message}`;
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+
+        // Open WhatsApp
+        window.open(whatsappUrl, '_blank');
+
+        setStatus("success");
+        form.reset();
+
+        // Reset status after a few seconds
+        setTimeout(() => setStatus("idle"), 5000);
     };
 
     return (
@@ -36,7 +40,7 @@ export const ContactForm: React.FC = () => {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
 
             <h3 className="font-display text-4xl font-black mb-6">FALE CONOSCO</h3>
-            <p className="font-body text-gray-500 mb-8">Envie uma mensagem direta para nossa equipe. Responderemos em breve.</p>
+            <p className="font-body text-gray-500 mb-8">Envie uma mensagem direta para nossa equipe via WhatsApp. Responderemos o mais rápido possível.</p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -54,18 +58,14 @@ export const ContactForm: React.FC = () => {
                     <textarea name="message" id="message" rows={4} required className="w-full bg-surface-light dark:bg-surface-dark border-b-2 border-gray-300 dark:border-gray-700 focus:border-primary px-0 py-3 transition-colors outline-none font-bold resize-none" placeholder="OLÁ, GOSTARIA DE SABER MAIS SOBRE..."></textarea>
                 </div>
 
-                <button type="submit" disabled={status === "submitting"} className="w-full bg-black dark:bg-white text-white dark:text-black py-4 font-tech text-xl tracking-widest hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all duration-300 clip-button disabled:opacity-50 disabled:cursor-not-allowed">
-                    {status === "submitting" ? "ENVIANDO..." : "ENVIAR MENSAGEM"}
+                <button type="submit" disabled={status === "submitting"} className="w-full bg-green-500 text-white py-4 font-tech text-xl tracking-widest hover:bg-green-600 transition-all duration-300 clip-button disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(34,197,94,0.4)]">
+                    <Send size={20} />
+                    {status === "submitting" ? "ABRINDO WHATSAPP..." : "ENVIAR NO WHATSAPP"}
                 </button>
 
                 {status === "success" && (
                     <div className="p-4 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 font-bold text-center text-sm border border-green-200 dark:border-green-800">
-                        Mensagem enviada com sucesso!
-                    </div>
-                )}
-                {status === "error" && (
-                    <div className="p-4 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-bold text-center text-sm border border-red-200 dark:border-red-800">
-                        Erro ao enviar. Tente novamente ou use o WhatsApp.
+                        Redirecionando para o WhatsApp...
                     </div>
                 )}
             </form>
