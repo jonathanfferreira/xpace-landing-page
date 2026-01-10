@@ -106,7 +106,7 @@ const getRoomColor = (room: string) => {
     case 'XPERIENCE': return 'text-primary border-primary';
     case 'XLAB': return 'text-secondary border-secondary';
     case 'XCORE': return 'text-tertiary border-tertiary';
-    case 'XTAGE': return 'text-cyber-pink border-cyber-pink';
+    case 'XTAGE': return 'text-primary border-primary';
     default: return 'text-white border-white';
   }
 };
@@ -116,7 +116,7 @@ const getRoomBg = (room: string) => {
     case 'XPERIENCE': return 'bg-primary/10';
     case 'XLAB': return 'bg-secondary/10';
     case 'XCORE': return 'bg-tertiary/10';
-    case 'XTAGE': return 'bg-cyber-pink/10';
+    case 'XTAGE': return 'bg-primary/10';
     default: return 'bg-gray-800';
   }
 };
@@ -132,7 +132,7 @@ const getCategory = (age?: string): string => {
 
 const openWhatsApp = (activity: string, time: string, day: string) => {
   const message = `Olá! Vi a aula de *${activity}* de *${day} às ${time}* no site e gostaria de agendar uma experimental.`;
-  const url = `https://wa.me/554791700812?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/554784970324?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
 
@@ -154,7 +154,7 @@ export const Schedule: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-black dark:border-white pb-6">
           <div>
             <h2 className="font-display text-5xl md:text-8xl font-black text-text-main-light dark:text-text-main-dark mb-2 tracking-tighter">
-              GRADE <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyber-pink">SEMANAL</span>
+              GRADE <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">SEMANAL</span>
             </h2>
           </div>
 
@@ -163,7 +163,7 @@ export const Schedule: React.FC = () => {
             <div className="flex items-center gap-2"><span className="w-2 h-2 bg-primary rounded-full"></span>XPERIENCE</div>
             <div className="flex items-center gap-2"><span className="w-2 h-2 bg-secondary rounded-full"></span>XLAB</div>
             <div className="flex items-center gap-2"><span className="w-2 h-2 bg-tertiary rounded-full"></span>XCORE</div>
-            <div className="flex items-center gap-2"><span className="w-2 h-2 bg-cyber-pink rounded-full"></span>XTAGE</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 bg-primary rounded-full"></span>XTAGE</div>
           </div>
         </div>
 
@@ -174,8 +174,8 @@ export const Schedule: React.FC = () => {
               key={filter}
               onClick={() => setActiveFilter(filter)}
               className={`px-4 py-2 rounded-lg font-tech font-bold text-sm tracking-widest uppercase transition-all duration-300 border ${activeFilter === filter
-                ? 'bg-cyber-pink text-white border-cyber-pink shadow-[0_0_15px_rgba(235,0,188,0.5)]'
-                : 'bg-transparent text-gray-500 border-gray-700 hover:border-cyber-pink hover:text-cyber-pink'
+                ? 'bg-primary text-white border-primary shadow-[0_0_15px_rgba(255,82,0,0.5)]'
+                : 'bg-transparent text-gray-500 border-gray-700 hover:border-primary hover:text-primary'
                 }`}
             >
               {filter}
@@ -190,7 +190,7 @@ export const Schedule: React.FC = () => {
               key={day}
               onClick={() => setActiveTab(day)}
               className={`px-6 py-3 rounded-full font-bold text-sm tracking-widest whitespace-nowrap transition-all duration-300 ${activeTab === day
-                ? 'bg-black text-white dark:bg-white dark:text-black shadow-[0_0_15px_rgba(124,58,237,0.5)]'
+                ? 'bg-black text-white dark:bg-white dark:text-black shadow-[0_0_15px_rgba(99,36,178,0.5)]'
                 : 'border border-gray-300 dark:border-gray-800 text-gray-500 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-white'
                 }`}
             >
@@ -218,7 +218,7 @@ export const Schedule: React.FC = () => {
                     className="flex flex-col p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark hover:border-primary/50 transition-colors duration-300 group shadow-sm hover:shadow-md relative overflow-hidden"
                   >
                     <div className="flex justify-between items-start mb-4">
-                      <span className="font-tech text-2xl font-bold text-cyber-pink">
+                      <span className="font-tech text-2xl font-bold text-primary">
                         {item.time}
                       </span>
                       <div className="flex gap-2">

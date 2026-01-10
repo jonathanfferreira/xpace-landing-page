@@ -18,7 +18,7 @@ const features = [
         title: "ILUMINAÇÃO TECH",
         description: "Cenários dinâmicos com LED para seus Reels e vídeos.",
         icon: "lightbulb",
-        color: "cyber-pink"
+        color: "primary"
     },
     {
         title: "WI-FI ALTA VELOCIDADE",
@@ -82,7 +82,7 @@ export const Rental: React.FC = () => {
 
                         <div className="mt-12">
                             <a
-                                href="https://wa.me/554791700812?text=Olá! Gostaria de saber mais sobre o aluguel de salas na XPACE."
+                                href="https://wa.me/554784970324?text=Olá! Gostaria de saber mais sobre o aluguel de salas na XPACE."
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-tech tracking-widest rounded-full hover:bg-primary/80 transition-all group overflow-hidden relative"
@@ -123,7 +123,7 @@ export const Rental: React.FC = () => {
 
                         {/* Floating Decoration */}
                         <div className="absolute -top-6 -right-6 w-32 h-32 border-t-2 border-r-2 border-primary/30 rounded-tr-3xl"></div>
-                        <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-cyber-pink/30 rounded-bl-3xl"></div>
+                        <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-primary/30 rounded-bl-3xl"></div>
                     </motion.div>
 
                 </div>

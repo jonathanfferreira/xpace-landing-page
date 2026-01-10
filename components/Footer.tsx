@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
               <div>
                 <div className="mb-4 inline-block select-none group">
                   <div className="flex flex-col items-start cursor-default">
-                    <span className="font-display font-black text-6xl tracking-widest leading-none text-text-main-light dark:text-text-main-dark group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-cyber-pink transition-all duration-500">XPACE</span>
+                    <span className="font-display font-black text-6xl tracking-widest leading-none text-text-main-light dark:text-text-main-dark group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-500">XPACE</span>
                     <span className="font-sans text-xs font-bold tracking-[0.52em] uppercase mt-2 w-full text-left text-text-main-light dark:text-text-main-dark">Escola de Dança</span>
                   </div>
                 </div>
@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-lg">call</span>
-                    <a href="https://wa.me/554791700812" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">+55 47 9170-0812</a>
+                    <a href="https://wa.me/554784970324" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">+55 47 8497-0324</a>
                   </li>
                   <li className="flex gap-3 items-start">
                     <span className="material-symbols-outlined text-lg mt-1">location_on</span>

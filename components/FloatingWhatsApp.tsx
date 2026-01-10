@@ -5,7 +5,7 @@ export const FloatingWhatsApp: React.FC = () => {
     return (
         <AnimatePresence>
             <motion.a
-                href="https://wa.me/554791700812"
+                href="https://wa.me/554784970324"
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ scale: 0, opacity: 0, rotate: -180 }}

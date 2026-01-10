@@ -48,10 +48,9 @@
       theme: {
         extend: {
           colors: {
-            primary: '#F22953', // Xpace Pink
-            secondary: '#5C1D8C', // Deep Purple
-            tertiary: '#00F0FF', // Cyan/Neon Blue
-            'cyber-pink': '#FF007F', // Neon Pink
+            primary: '#6324b2', // Purple Xpace (Primary)
+            secondary: '#ff5200', // Orange Xpace (Secondary)
+            tertiary: '#2300d0', // Blue Xpace (Sparse)
             background: {
               light: '#F5F5F7',
               dark: '#050505',
@@ -90,30 +89,9 @@
   </script>
 
   <style>
-    /* Holographic Background Animation */
-    @keyframes gradient-xy {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    .bg-holographic {
-      background: linear-gradient(-45deg, #0a0a0a, #1a0b2e, #2e0b16, #0a0a0a);
-      background-size: 400% 400%;
-      animation: gradient-xy 15s ease infinite;
-    }
-
     /* Refined Text Gradient */
     .text-gradient {
-      background: linear-gradient(to right, #F22953, #00F0FF);
+      background: linear-gradient(to right, #6324b2, #ff5200);
       /* Red to Cyan */
       -webkit-background-clip: text;
       background-clip: text;
@@ -164,7 +142,7 @@
 </head>
 
 <body
-  class="bg-holographic text-text-main-light dark:text-text-main-dark transition-colors duration-300 font-body antialiased selection:bg-primary selection:text-white relative">
+  class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark transition-colors duration-300 font-body antialiased selection:bg-primary selection:text-white relative">
   <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
