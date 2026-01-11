@@ -10,15 +10,15 @@ export const Hero: React.FC = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
 
         {/* Main Title */}
-        <h1 className="font-display font-bold text-7xl md:text-9xl tracking-tight mb-8 leading-[0.85]">
+        <h1 className="font-display font-bold text-7xl md:text-9xl tracking-tight mb-8 leading-[0.85] text-black dark:text-white transition-colors duration-300">
           MOVA-SE <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-gray-600 to-gray-400 dark:from-white dark:via-gray-200 dark:to-gray-400">
             ALÉM DOS LIMITES
           </span>
         </h1>
 
         {/* Subtext */}
-        <div className="max-w-xl mx-auto backdrop-blur-sm bg-white/5 dark:bg-black/20 p-4 rounded-xl border border-white/10">
+        <div className="max-w-xl mx-auto backdrop-blur-sm bg-white/5 dark:bg-black/20 p-4 rounded-xl border border-black/10 dark:border-white/10">
           <p className="text-lg md:text-xl text-text-main-light dark:text-text-main-dark font-body font-medium tracking-wide leading-relaxed">
             Educação em Dança Impulsionada por Tecnologia Premium.
           </p>
@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
 
           {/* Main CTA - Simplified */}
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary via-cyber-pink to-secondary rounded-full blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-tertiary rounded-full blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
 
             <a href="#plans" className="relative block px-12 py-6 bg-black dark:bg-white text-white dark:text-black text-2xl font-tech tracking-widest rounded-full transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden">
               <span className="relative z-10 font-bold flex items-center justify-center gap-3">
@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
             </a>
           </div>
 
-          <a href="#schedule" className="px-8 py-4 border border-black dark:border-white text-xl font-tech tracking-widest rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center justify-center gap-2 group hover:-translate-y-1">
+          <a href="#schedule" className="px-8 py-4 border border-black dark:border-white text-black dark:text-white text-xl font-tech tracking-widest rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center justify-center gap-2 group hover:-translate-y-1">
             <span className="material-symbols-outlined text-sm group-hover:rotate-180 transition-transform duration-500">calendar_month</span>
             Ver Horários
           </a>

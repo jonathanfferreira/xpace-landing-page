@@ -28,8 +28,18 @@ const App: React.FC = () => {
     <div className="relative min-h-screen">
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
 
+      {/* Global Background Image (2026 Identity - Dark Mode Only) */}
+      <div className="fixed inset-0 pointer-events-none z-[-1] hidden dark:block">
+        <img
+          src="/background-2026.png"
+          alt="Xpace Background"
+          className="w-full h-full object-cover opacity-100"
+        />
+        <div className="absolute inset-0 bg-background-dark/80 mix-blend-multiply"></div>
+      </div>
+
       {/* Global Noise Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-noise opacity-40 mix-blend-overlay"></div>
+      <div className="fixed inset-0 pointer-events-none z-0 bg-noise opacity-20 mix-blend-overlay"></div>
 
       <Navbar />
 

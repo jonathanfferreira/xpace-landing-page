@@ -255,7 +255,7 @@ export const Teachers: React.FC = () => {
 
         {/* Directors Section */}
         <div className="mb-20">
-          <h3 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-8 uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Direção</h3>
+          <h3 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-8 uppercase text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-500 dark:from-white dark:to-gray-400 transition-all duration-300">Direção</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {directorsData.map((director) => (
               <TeamCard key={director.id} member={director} />
@@ -265,7 +265,7 @@ export const Teachers: React.FC = () => {
 
         {/* Teachers Section */}
         <div>
-          <h3 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-8 uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Professores</h3>
+          <h3 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-8 uppercase text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-500 dark:from-white dark:to-gray-400 transition-all duration-300">Professores</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
             {teachersData.map((teacher) => (
               <TeamCard key={teacher.id} member={teacher} />

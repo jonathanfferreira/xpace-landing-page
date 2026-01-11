@@ -45,7 +45,6 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           {/* Logo */}
-          {/* Logo */}
           <a href="#" className="flex-shrink-0 flex items-center group cursor-pointer" onClick={closeMenu}>
             <div className="flex flex-col items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <img src="/images/logo/XPACE PERFIL PRETO.png" alt="XPACE Logo" className="h-10 w-auto dark:hidden" />
@@ -69,7 +68,7 @@ export const Navbar: React.FC = () => {
             ))}
 
             <a href="#contact" className="relative group overflow-hidden rounded-sm ml-4">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-cyber-pink rounded-sm blur opacity-75 group-hover:opacity-100 transition duration-500 group-hover:duration-200"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-sm blur opacity-75 group-hover:opacity-100 transition duration-500 group-hover:duration-200"></div>
               <div className="relative px-6 py-2 bg-black text-white dark:bg-white dark:text-black clip-button font-tech text-xl tracking-widest transition-all duration-300 flex items-center gap-2 group-hover:bg-opacity-90 group-hover:scale-[1.02]">
                 <span>Junte-se</span>
                 <span className="material-symbols-outlined text-sm transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
