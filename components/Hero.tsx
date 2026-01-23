@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Hero: React.FC = () => {
+export const Hero: React.FC<{ onOpenQuiz: () => void }> = ({ onOpenQuiz }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
       {/* Animated Blobs */}
@@ -27,21 +27,21 @@ export const Hero: React.FC = () => {
         {/* Buttons */}
         <div className="mt-12 flex flex-col md:flex-row justify-center gap-6 items-center">
 
-          {/* Main CTA - Simplified */}
-          <div className="relative group">
+          {/* Main CTA - Quiz Trigger */}
+          <div className="relative group cursor-pointer" onClick={onOpenQuiz}>
             <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-tertiary rounded-full blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
 
-            <a href="#plans" className="relative block px-12 py-6 bg-black dark:bg-white text-white dark:text-black text-2xl font-tech tracking-widest rounded-full transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden">
+            <button className="relative block px-12 py-6 bg-black dark:bg-white text-white dark:text-black text-2xl font-tech tracking-widest rounded-full transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden">
               <span className="relative z-10 font-bold flex items-center justify-center gap-3">
-                COMECE A DANÇAR
-                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                DESCUBRA SEU ESTILO
+                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">school</span>
               </span>
-            </a>
+            </button>
           </div>
 
-          <a href="#schedule" className="px-8 py-4 border border-black dark:border-white text-black dark:text-white text-xl font-tech tracking-widest rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center justify-center gap-2 group hover:-translate-y-1">
-            <span className="material-symbols-outlined text-sm group-hover:rotate-180 transition-transform duration-500">calendar_month</span>
-            Ver Horários
+          <a href="#plans" className="px-8 py-4 border border-black dark:border-white text-black dark:text-white text-xl font-tech tracking-widest rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center justify-center gap-2 group hover:-translate-y-1">
+            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            Matricule-se
           </a>
         </div>
       </div>

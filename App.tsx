@@ -20,9 +20,33 @@ import { Footer } from './components/Footer';
 import { Location } from './components/Location';
 import { Preloader } from './components/Preloader';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { QuizModal } from './src/components/Quiz/QuizModal'; // Quiz Component
+
+import './index.css';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
+  const [hasOpenedQuiz, setHasOpenedQuiz] = useState(false);
+
+  // LOGIC: Smart Trigger (Auto-open after 15s if not interacted)
+  useEffect(() => {
+    if (isLoading) return;
+
+    const timer = setTimeout(() => {
+      if (!hasOpenedQuiz) {
+        setIsQuizOpen(true);
+        setHasOpenedQuiz(true);
+      }
+    }, 15000); // 15 seconds delay
+
+    return () => clearTimeout(timer);
+  }, [isLoading, hasOpenedQuiz]);
+
+  const handleOpenQuiz = () => {
+    setIsQuizOpen(true);
+    setHasOpenedQuiz(true);
+  };
 
   return (
     <div className="relative min-h-screen">
@@ -44,7 +68,7 @@ const App: React.FC = () => {
       <Navbar />
 
       <main>
-        <Hero />
+        <Hero onOpenQuiz={handleOpenQuiz} />
         <Marquee />
         <Manifesto />
         <About />
@@ -65,6 +89,9 @@ const App: React.FC = () => {
 
       <Footer />
       <FloatingWhatsApp />
+
+      {/* GLOBAL QUIZ MODAL */}
+      <QuizModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
     </div>
   );
 };

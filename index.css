@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+    /* XPACE 2026 IDENTITY PALETTE ("Holographic Evolution") */
+    --color-primary: #6324b2;
+    /* XPACE Purple (Pantone 266 C) - Loyalty & Mystery */
+    --color-secondary: #eb00bc;
+    /* XPACE Pink (Rhodamine Red C) - Connection & Energy */
+    --color-accent: #ff5200;
+    /* XPACE Orange (Orange 021 C) - Adrenaline & Creativity */
+
+    --color-background-dark: #050505;
+    /* Deepest Black */
+    --color-background-card: rgba(99, 36, 178, 0.05);
+    /* Tinted Glass (Purple hint) */
+
+    /* FONTS (Steelfish = Headlines, Chillax = Display, Poppins = Body) */
+    --font-display: 'Chillax', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    --font-tech: 'Steelfish', sans-serif;
+
+    /* ANIMATIONS */
+    --animate-float: float 6s ease-in-out infinite;
+    --animate-glow: glow 3s ease-in-out infinite alternate;
+    --animate-pulse-slow: pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes glow {
+        from {
+            box-shadow: 0 0 15px rgba(99, 36, 178, 0.3), 0 0 30px rgba(99, 36, 178, 0.1);
+        }
+
+        to {
+            box-shadow: 0 0 25px rgba(235, 0, 188, 0.4), 0 0 50px rgba(235, 0, 188, 0.2);
+        }
+    }
+
+    @keyframes pulse-glow {
+
+        0%,
+        100% {
+            opacity: 0.8;
+            filter: brightness(1);
+        }
+
+        50% {
+            opacity: 1;
+            filter: brightness(1.3);
+        }
+    }
+}
+
+/* UTILITIES */
+@layer utilities {
+    .glass-panel {
+        @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+        /* Subtle Purple Tint for Branding */
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(99, 36, 178, 0.05) 100%);
+    }
+
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-linear-to-r from-[--color-secondary] to-[--color-accent];
+    }
+
+    .text-gradient-primary {
+        @apply bg-clip-text text-transparent bg-linear-to-r from-[--color-primary] to-[--color-secondary];
+    }
+
+    /* Shapes */
+    .clip-card {
+        clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+    }
+
+    .tag-shape {
+        clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+    }
+
+    .cyber-button {
+        @apply relative overflow-hidden px-8 py-4 bg-white/5 hover:bg-white/10 transition-all duration-300 border border-[--color-secondary] text-white uppercase tracking-widest font-tech text-2xl;
+        clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+        box-shadow: 0 0 15px rgba(235, 0, 188, 0.2);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .cyber-button:hover {
+        box-shadow: 0 0 30px rgba(235, 0, 188, 0.5);
+        border-color: var(--color-accent);
+        transform: translateY(-2px);
+    }
+}
+
+/* BASE STYLES */
+body {
+    @apply bg-[#050505] text-white antialiased overflow-x-hidden font-body uppercase;
+    /* Deep Atmospheric Background (Purple Haze) */
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(99, 36, 178, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(235, 0, 188, 0.10) 0%, transparent 50%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply font-display tracking-tight;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+}
