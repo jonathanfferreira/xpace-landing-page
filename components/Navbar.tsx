@@ -5,10 +5,14 @@ export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Check system preference or localStorage on mount
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // Check localStorage first, then system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       setIsDark(true);
       document.documentElement.classList.add('dark');
+    } else {
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
@@ -17,8 +21,10 @@ export const Navbar: React.FC = () => {
     setIsDark(newMode);
     if (newMode) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   };
 
@@ -32,12 +38,13 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Sobre', href: '#about' },
-    { name: 'O Universo', href: '#features' },
     { name: 'Equipe', href: '#teachers' },
+    { name: 'O Universo', href: '#features' },
     { name: 'Cinema', href: '#performances' },
     { name: 'Horários', href: '#schedule' },
     { name: 'Aluguel', href: '#rental' },
     { name: 'Planos', href: '#plans' },
+    { name: 'XPACE PRO', href: '#xpace-pro' },
   ];
 
   return (

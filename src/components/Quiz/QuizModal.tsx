@@ -54,8 +54,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
         setIsSubmitting(true);
 
         try {
-            // Send to API
-            await fetch('http://localhost:3000/api/quiz', {
+            // Send to API (Cloud Function)
+            await fetch('https://us-central1-xpace-premium-96518327-b22be.cloudfunctions.net/api/quiz', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

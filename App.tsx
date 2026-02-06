@@ -20,6 +20,7 @@ import { Footer } from './components/Footer';
 import { Location } from './components/Location';
 import { Preloader } from './components/Preloader';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { XpacePro } from './components/XpacePro';
 import { QuizModal } from './src/components/Quiz/QuizModal'; // Quiz Component
 
 import './index.css';
@@ -81,6 +82,7 @@ const App: React.FC = () => {
         <Schedule />
         <Rental />
         <Pricing />
+        <XpacePro />
         <Testimonials />
         <CTA />
         <FAQ />

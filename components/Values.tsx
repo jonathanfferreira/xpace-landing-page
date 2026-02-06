@@ -29,7 +29,7 @@ const values = [
 
 export const Values: React.FC = () => {
   return (
-    <section className="bg-black text-white relative z-20">
+    <section className="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark transition-colors duration-500 relative z-20">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {values.map((item, index) => (
           <div key={index} className="group relative h-[25vh] min-h-[200px] overflow-hidden border border-gray-900 bg-neutral-950 transition-colors duration-500 hover:bg-neutral-900">
@@ -40,8 +40,8 @@ export const Values: React.FC = () => {
             {/* Content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
               <h3
-                className="font-display text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tighter uppercase transition-all duration-500 text-transparent group-hover:text-white group-hover:scale-105 select-none break-words w-full"
-                style={{ WebkitTextStroke: '1px white' }}
+                className="font-display text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tighter uppercase transition-all duration-500 text-transparent group-hover:text-text-main-light dark:group-hover:text-text-main-dark group-hover:scale-105 select-none break-words w-full"
+                style={{ WebkitTextStroke: '1px currentColor' }}
               >
                 {item.title}
               </h3>

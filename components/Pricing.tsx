@@ -32,10 +32,8 @@ export const Pricing: React.FC = () => {
 
               <div className="flex flex-col items-center justify-center bg-white/5 p-6 rounded-2xl border border-[#FFD700]/30 min-w-[280px]">
                 <span className="text-[#FFD700] font-tech text-sm tracking-widest uppercase mb-1">Plano Anual</span>
-                <div className="flex flex-col items-center">
-                  <span className="text-gray-400 font-tech text-sm line-through decoration-[#FFD700] decoration-2 opacity-70">De R$499,99</span>
-                  <div className="text-6xl font-display font-black text-white mb-2">R$350<span className="text-xl text-gray-400 font-body font-normal">/mês</span></div>
-                </div>
+                <div className="text-6xl font-display font-black text-white mb-2">R$499<span className="text-xl text-gray-400 font-body font-normal">/mês</span></div>
+
                 <a href={nextFitUrl} target="_blank" rel="noopener noreferrer" className="w-full bg-[#FFD700] text-black hover:bg-white transition-colors duration-300 py-4 px-8 rounded-xl font-bold font-tech text-lg tracking-widest uppercase text-center mt-2">
                   QUERO SER VIP
                 </a>
@@ -170,6 +168,6 @@ export const Pricing: React.FC = () => {
         </div> */}
 
       </div>
-    </section>
+    </section >
   );
 };
