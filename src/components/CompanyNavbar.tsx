@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { playHoverSound, playClickSound } from '../utils/audio';
 
 export const CompanyNavbar: React.FC = () => {
   const [isDark, setIsDark] = useState(false);
@@ -64,8 +63,6 @@ export const CompanyNavbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 className="relative group py-1"
-                onMouseEnter={playHoverSound}
-                onClick={playClickSound}
               >
                 <span className="text-lg xl:text-xl font-tech tracking-widest text-text-main-light dark:text-text-main-dark transition-colors duration-300 group-hover:text-secondary">
                   {link.name}
@@ -77,8 +74,6 @@ export const CompanyNavbar: React.FC = () => {
             <a 
               href="#auditions" 
               className="relative group overflow-hidden rounded-sm ml-4"
-              onMouseEnter={playHoverSound}
-              onClick={playClickSound}
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary to-cyber-pink rounded-sm blur opacity-75 group-hover:opacity-100 transition duration-500 group-hover:duration-200"></div>
               <div className="relative px-6 py-2 bg-black text-white dark:bg-white dark:text-black clip-button font-tech text-xl tracking-widest transition-all duration-300 flex items-center gap-2 group-hover:bg-opacity-90 group-hover:scale-[1.02]">
@@ -89,10 +84,8 @@ export const CompanyNavbar: React.FC = () => {
 
             <button
               onClick={() => {
-                playClickSound();
                 toggleTheme();
               }}
-              onMouseEnter={playHoverSound}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-text-main-light dark:text-text-main-dark hover:rotate-12 transform duration-300"
             >
               <span className={`material-symbols-outlined text-xl ${isDark ? 'hidden' : 'block'}`}>dark_mode</span>
