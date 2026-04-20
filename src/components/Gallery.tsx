@@ -8,67 +8,42 @@ type GalleryItem = {
   category?: string;
 };
 
-const items: GalleryItem[] = [
-  // Row 1 & 2
-  {
-    type: 'image',
-    src: "/images/gallery/IMG_4858.JPG",
-    alt: "XPACE Moment 1",
-    span: "md:col-span-2 md:row-span-2", // Large block left (Cols 1-2, Rows 1-2)
-    category: "SHOWS"
-  },
-  {
-    type: 'image',
-    src: "/images/gallery/IMG_5244.JPG",
-    alt: "XPACE Moment 3",
-    span: "md:col-span-1 md:row-span-2", // Tall item (Col 3, Rows 1-2)
-    category: "ESTÚDIO"
-  },
-  {
-    type: 'image',
-    src: "/images/gallery/IMG_6202.JPG",
-    alt: "XPACE Moment 2",
-    span: "md:col-span-1 md:row-span-1", // Top Right (Col 4, Row 1)
-    category: "AULAS"
-  },
-  {
-    type: 'image',
-    src: "/images/gallery/IMG_4860.JPG",
-    alt: "XPACE Moment 4",
-    span: "md:col-span-1 md:row-span-1", // Mid Right (Col 4, Row 2)
-    category: "VIBE"
-  },
-
-  // Row 3
-  {
-    type: 'image',
-    src: "/images/gallery/IMG_8694.JPG",
-    alt: "XPACE Moment 5",
-    span: "md:col-span-1 md:row-span-1",
-    category: "BATALHAS"
-  },
-  {
-    type: 'image',
-    src: "/images/gallery/IMG_4864.JPG",
-    alt: "XPACE Moment 6",
-    span: "md:col-span-1 md:row-span-1",
-    category: "EVENTS"
-  },
-  {
-    type: 'image',
-    src: "/images/gallery/IMG_4865.JPG",
-    alt: "XPACE Moment 7",
-    span: "md:col-span-1 md:row-span-1",
-    category: "COMMUNITY"
-  },
-  {
-    type: 'image',
-    src: "/images/gallery/IMG_6201.JPG",
-    alt: "XPACE Moment 8",
-    span: "md:col-span-1 md:row-span-1", // Changed from 2x1 to 1x1 to fit grid
-    category: "HIGHLIGHTS"
-  }
+const rawImages = [
+  { src: "/images/gallery_new/estrutura_2.webp", category: "ESTÚDIO", alt: "XPACE Estrutura" },
+  { src: "/images/gallery_new/estrutura1.webp", category: "ESTÚDIO", alt: "XPACE Estrutura" },
+  { src: "/images/gallery_new/img_0527.heic.jpg", category: "ESTRUTURA", alt: "Estrutura 1" },
+  { src: "/images/gallery_new/img_0528.heic.jpg", category: "ESTRUTURA", alt: "Estrutura 2" },
+  { src: "/images/gallery_new/img_0529.heic.jpg", category: "ESTRUTURA", alt: "Estrutura 3" },
+  { src: "/images/gallery_new/img_0530.heic.jpg", category: "ESTRUTURA", alt: "Estrutura 4" },
+  { src: "/images/gallery_new/img_0531.heic.jpg", category: "ESTRUTURA", alt: "Estrutura 5" },
+  { src: "/images/gallery_new/img_0532.heic.jpg", category: "ESTRUTURA", alt: "Estrutura 6" },
+  { src: "/images/gallery_new/img_0533.heic.jpg", category: "ESTRUTURA", alt: "Estrutura 7" },
+  { src: "/images/gallery_new/img_0537.heic.jpg", category: "ESTRUTURA", alt: "Estrutura 8" },
+  { src: "/images/gallery_new/sala_2.webp", category: "SALA 2", alt: "Sala 2" },
+  { src: "/images/gallery_new/sala_3.webp", category: "SALA 3", alt: "Sala 3" },
+  { src: "/images/gallery_new/sala1.webp", category: "SALA 1", alt: "Sala 1" },
+  { src: "/images/gallery_new/whatsapp_image_2026-04-07_at_10.16.35__1_.webp", category: "VIBE", alt: "Vibe 1" },
+  { src: "/images/gallery_new/whatsapp_image_2026-04-07_at_10.16.35__2_.webp", category: "ESTÚDIO", alt: "Vibe 2" },
+  { src: "/images/gallery_new/whatsapp_image_2026-04-07_at_10.16.35__3_.webp", category: "HIGHLIGHTS", alt: "Vibe 3" },
+  { src: "/images/gallery_new/whatsapp_image_2026-04-07_at_10.16.35__4_.webp", category: "XPACE", alt: "Vibe 4" }
 ];
+
+const items: GalleryItem[] = rawImages.map((img, index) => {
+  let span = "md:col-span-1 md:row-span-1";
+  const mod = index % 8;
+  
+  if (mod === 0) span = "md:col-span-2 md:row-span-2";
+  else if (mod === 1) span = "md:col-span-1 md:row-span-2";
+  else if (index === rawImages.length - 1 && mod !== 0) span = "md:col-span-4 md:row-span-2"; // Make the last image span fully if it's dangling
+
+  return {
+    type: 'image',
+    src: img.src,
+    alt: img.alt,
+    category: img.category,
+    span
+  };
+});
 
 export const Gallery: React.FC = () => {
   return (
@@ -98,6 +73,7 @@ export const Gallery: React.FC = () => {
                 <img
                   src={item.src}
                   alt={item.alt}
+                  loading="lazy"
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 group-hover:grayscale-0 grayscale md:grayscale"
                 />
 

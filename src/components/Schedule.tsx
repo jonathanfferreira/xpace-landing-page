@@ -5,8 +5,9 @@ import { MessageCircle } from 'lucide-react';
 type ScheduleItem = {
   time: string;
   activity: string;
-  room: string;
+  level: string;
   age?: string;
+  tag?: string;
 };
 
 type WeeklySchedule = {
@@ -15,106 +16,65 @@ type WeeklySchedule = {
 
 const scheduleData: WeeklySchedule = {
   "SEGUNDA": [
-    { time: "08:00", activity: "Street Dance Kids", room: "XPERIENCE", age: "ACIMA 5 +" },
-    { time: "09:00", activity: "Teatro", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "09:00", activity: "Ritmos", room: "XTAGE", age: "ACIMA 15 +" },
-    { time: "14:00", activity: "Danças Populares", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "14:30", activity: "Street Dance Kids", room: "XLAB", age: "ACIMA 5 +" },
-    { time: "15:30", activity: "Teatro", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Street Dance Junior", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "19:00", activity: "Contemporâneo", room: "XLAB", age: "ACIMA 12 +" },
-    { time: "19:00", activity: "Street Dance Kids", room: "XCORE", age: "ACIMA 5 +" },
-    { time: "19:00", activity: "Ritmos", room: "XTAGE", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Jiu Jitsu", room: "XTAGE", age: "ACIMA 6 +" },
-    { time: "20:00", activity: "Street Dance Senior", room: "XPERIENCE", age: "ACIMA 16 +" },
-    { time: "20:00", activity: "Jazz Iniciante", room: "XCORE", age: "ACIMA 18 +" },
-    { time: "20:00", activity: "Acrobacia", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Jiu Jitsu", room: "XTAGE" },
-    { time: "20:00", activity: "Muay Thai", room: "XLAB" },
-    { time: "21:00", activity: "Jazz", room: "XPERIENCE", age: "ACIMA 18 +" },
+    { time: "19:00", activity: "Street Dance", level: "INICIANTE", age: "ACIMA 5 ANOS" },
+    { time: "19:00", activity: "Contemporâneo", level: "INICIANTE", age: "ACIMA 12 ANOS" },
+    { time: "19:00", activity: "Street Dance", level: "AVANÇADO", age: "ACIMA 12 ANOS" },
+    { time: "20:00", activity: "Acrobacia", level: "INICIANTE", age: "ACIMA 12 ANOS" },
+    { time: "20:00", activity: "Street Dance", level: "AVANÇADO", age: "ACIMA 16 ANOS" },
+    { time: "20:00", activity: "Jazz", level: "INICIANTE", age: "ACIMA 15 ANOS" },
+    { time: "21:00", activity: "Jazz", level: "INTERMEDIÁRIO", age: "ACIMA 18 ANOS" },
   ],
   "TERÇA": [
-    { time: "09:00", activity: "Street Dance Teens Iniciante", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "14:30", activity: "Street Dance Iniciante", room: "XLAB", age: "ACIMA 12 +" },
-    { time: "15:30", activity: "Baby Class", room: "XLAB", age: "ACIMA 3 +" },
-    { time: "19:00", activity: "Jazz Funk (Prof. Gus)", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Ritmos", room: "XCORE", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Muay Thai", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Dança de Salão", room: "XLAB", age: "ACIMA 18 +" },
-    { time: "21:00", activity: "Ballet Iniciante", room: "XCORE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "K-Pop", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Muay Thai", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Street Dance Iniciante", room: "XLAB", age: "ACIMA 12 +" },
+    { time: "19:00", activity: "K-Pop", level: "INTERMEDIÁRIO", age: "ACIMA 12 ANOS" },
+    { time: "19:00", activity: "Ritmos", level: "INICIANTE", age: "ACIMA 18 ANOS" },
+    { time: "20:00", activity: "Jazz Funk", level: "INICIANTE", age: "ACIMA 15 ANOS", tag: "SÓ TERÇA" },
+    { time: "20:00", activity: "Street Dance", level: "INICIANTE", age: "ACIMA 15 ANOS" },
+    { time: "20:00", activity: "Dança de Salão", level: "INICIANTE", age: "ACIMA 18 ANOS" },
   ],
   "QUARTA": [
-    { time: "08:30", activity: "Street Dance Kids", room: "XLAB", age: "ACIMA 5 +" },
-    { time: "09:00", activity: "Ritmos", room: "XTAGE", age: "ACIMA 15 +" },
-    { time: "09:30", activity: "Teatro", room: "XCORE", age: "ACIMA 12 +" },
-    { time: "14:00", activity: "Danças Populares", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "14:30", activity: "Street Dance Kids", room: "XLAB", age: "ACIMA 5 +" },
-    { time: "15:30", activity: "Teatro", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Street Dance Junior", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "19:00", activity: "Contemporâneo", room: "XLAB", age: "ACIMA 12 +" },
-    { time: "19:00", activity: "Street Dance Kids", room: "XCORE", age: "ACIMA 5 +" },
-    { time: "19:00", activity: "Ritmos", room: "XTAGE", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Jiu Jitsu", room: "XTAGE" },
-    { time: "20:00", activity: "Street Dance Senior", room: "XPERIENCE", age: "ACIMA 16 +" },
-    { time: "20:00", activity: "Jazz Iniciante", room: "XCORE", age: "ACIMA 18 +" },
-    { time: "20:00", activity: "Acrobacia", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Jiu Jitsu", room: "XTAGE" },
-    { time: "20:00", activity: "Muay Thai", room: "XLAB" },
-    { time: "21:00", activity: "Jazz", room: "XPERIENCE", age: "ACIMA 18 +" },
+    { time: "19:00", activity: "Street Dance", level: "INICIANTE", age: "ACIMA 5 ANOS" },
+    { time: "19:00", activity: "Contemporâneo", level: "INICIANTE", age: "ACIMA 12 ANOS" },
+    { time: "19:00", activity: "Street Dance", level: "AVANÇADO", age: "ACIMA 12 ANOS" },
+    { time: "20:00", activity: "Acrobacia", level: "INICIANTE", age: "ACIMA 12 ANOS" },
+    { time: "20:00", activity: "Street Dance", level: "AVANÇADO", age: "ACIMA 16 ANOS" },
+    { time: "20:00", activity: "Jazz", level: "INICIANTE", age: "ACIMA 15 ANOS" },
+    { time: "21:00", activity: "Jazz", level: "INTERMEDIÁRIO", age: "ACIMA 18 ANOS" },
   ],
   "QUINTA": [
-    { time: "09:00", activity: "Street Dance Teens Iniciante", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "14:30", activity: "Street Dance Iniciante", room: "XLAB", age: "ACIMA 12 +" },
-    { time: "15:30", activity: "Baby Class", room: "XLAB", age: "ACIMA 3 +" },
-    { time: "19:00", activity: "Heels", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Ritmos", room: "XCORE", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Muay Thai", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Dança de Salão", room: "XLAB", age: "ACIMA 18 +" },
-    { time: "21:00", activity: "Ballet Iniciante", room: "XCORE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "K-Pop", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Muay Thai", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Street Dance Iniciante", room: "XLAB", age: "ACIMA 12 +" },
+    { time: "19:00", activity: "K-Pop", level: "INTERMEDIÁRIO", age: "ACIMA 12 ANOS" },
+    { time: "19:00", activity: "Ritmos", level: "INICIANTE", age: "ACIMA 18 ANOS" },
+    { time: "20:00", activity: "Heels", level: "INICIANTE", age: "ACIMA 15 ANOS", tag: "SÓ QUINTA" },
+    { time: "20:00", activity: "Street Dance", level: "INICIANTE", age: "ACIMA 15 ANOS" },
+    { time: "20:00", activity: "Dança de Salão", level: "INICIANTE", age: "ACIMA 18 ANOS" },
   ],
   "SEXTA": [
-    { time: "19:00", activity: "Danças Urbanas Adulto Iniciante", room: "XPERIENCE", age: "ACIMA 18 +" },
-    { time: "19:00", activity: "Jiu Jitsu Kids", room: "XLAB", age: "ACIMA 6 +" },
-    { time: "19:00", activity: "Jiu Jitsu", room: "XTAGE" },
-    { time: "19:00", activity: "Street Funk", room: "XPERIENCE", age: "ACIMA 15 +" },
-    { time: "20:00", activity: "Jiu Jitsu", room: "XTAGE" },
+    { time: "19:00", activity: "Street Funk", level: "INTERMEDIÁRIO", age: "ACIMA 15 ANOS" },
+    { time: "19:00", activity: "Street Dance", level: "INICIANTE", age: "ACIMA 18 ANOS" },
   ],
   "SÁBADO": [
-    { time: "09:00", activity: "Jazz Funk", room: "XPERIENCE", age: "ACIMA 15 +" },
-    { time: "10:00", activity: "Danças Urbanas (Geral)", room: "XPERIENCE", age: "ACIMA 18 +" },
-    { time: "11:00", activity: "Heels", room: "XPERIENCE", age: "ACIMA 15 +" },
-    { time: "12:00", activity: "Heels", room: "XPERIENCE", age: "ACIMA 15 +" },
-    { time: "14:00", activity: "Cia Heels", room: "XPERIENCE" },
-    { time: "14:30", activity: "Salão / Dancehall", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "14:30", activity: "Cia Danças Populares", room: "XTAGE" },
-    { time: "15:00", activity: "Cia Heels", room: "XPERIENCE" },
-    { time: "15:30", activity: "Salão / Dancehall", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "15:30", activity: "Cia Danças Populares", room: "XTAGE" },
+    { time: "09:00", activity: "Jazz Funk", level: "INTERMEDIÁRIO", age: "ACIMA 15 ANOS" },
+    { time: "09:15", activity: "Ballet Baby Class", level: "INICIANTE", age: "ACIMA 3 ANOS" },
+    { time: "10:00", activity: "Street Dance", level: "INTERMEDIÁRIO", age: "ACIMA 16 ANOS" },
+    { time: "10:00", activity: "Ballet Fit", level: "INICIANTE", age: "ACIMA 16 ANOS" },
+    { time: "11:00", activity: "Heels", level: "INTERMEDIÁRIO", age: "ACIMA 15 ANOS" },
+    { time: "14:30", activity: "Dancehall", level: "INTERMEDIÁRIO", age: "ACIMA 15 ANOS", tag: "VYBZ PROJECT" },
   ]
 };
 
-const getRoomColor = (room: string) => {
-  switch (room) {
-    case 'XPERIENCE': return 'text-primary border-primary';
-    case 'XLAB': return 'text-secondary border-secondary';
-    case 'XCORE': return 'text-tertiary border-tertiary';
-    case 'XTAGE': return 'text-primary border-primary';
+const getLevelColor = (level: string) => {
+  switch (level) {
+    case 'INICIANTE': return 'text-primary border-primary';
+    case 'INTERMEDIÁRIO': return 'text-secondary border-secondary';
+    case 'AVANÇADO': return 'text-accent border-accent';
     default: return 'text-white border-white';
   }
 };
 
-const getRoomBg = (room: string) => {
-  switch (room) {
-    case 'XPERIENCE': return 'bg-primary/10';
-    case 'XLAB': return 'bg-secondary/10';
-    case 'XCORE': return 'bg-tertiary/10';
-    case 'XTAGE': return 'bg-primary/10';
+const getLevelBg = (level: string) => {
+  switch (level) {
+    case 'INICIANTE': return 'bg-primary/10';
+    case 'INTERMEDIÁRIO': return 'bg-secondary/10';
+    case 'AVANÇADO': return 'bg-accent/10';
     default: return 'bg-gray-800';
   }
 };
@@ -156,12 +116,11 @@ export const Schedule: React.FC = () => {
             </h2>
           </div>
 
-          {/* Legend for Rooms */}
+          {/* Legend for Levels */}
           <div className="mt-6 md:mt-0 flex gap-4 text-xs font-tech tracking-widest flex-wrap">
-            <div className="flex items-center gap-2"><span className="w-2 h-2 bg-primary rounded-full"></span>XPERIENCE</div>
-            <div className="flex items-center gap-2"><span className="w-2 h-2 bg-secondary rounded-full"></span>XLAB</div>
-            <div className="flex items-center gap-2"><span className="w-2 h-2 bg-tertiary rounded-full"></span>XCORE</div>
-            <div className="flex items-center gap-2"><span className="w-2 h-2 bg-primary rounded-full"></span>XTAGE</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 bg-primary rounded-full"></span>INICIANTE</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 bg-secondary rounded-full"></span>INTERMEDIÁRIO</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 bg-accent rounded-full"></span>AVANÇADO</div>
           </div>
         </div>
 
@@ -219,14 +178,19 @@ export const Schedule: React.FC = () => {
                       <span className="font-tech text-2xl font-bold text-primary">
                         {item.time}
                       </span>
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 items-center flex-wrap">
+                        {item.tag && (
+                          <span className="px-2 py-1 rounded-full text-[10px] font-tech font-bold tracking-widest uppercase border border-gray-400 text-gray-500">
+                            {item.tag}
+                          </span>
+                        )}
                         {item.age && (
                           <span className="px-2 py-1 rounded-sm text-[10px] font-tech font-bold tracking-widest uppercase bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
                             {item.age}
                           </span>
                         )}
-                        <span className={`px-3 py-1 rounded-full text-[10px] font-tech font-bold tracking-widest uppercase border ${getRoomColor(item.room)} ${getRoomBg(item.room)}`}>
-                          {item.room}
+                        <span className={`px-3 py-1 rounded-full text-[10px] font-tech font-bold tracking-widest uppercase border ${getLevelColor(item.level)} ${getLevelBg(item.level)}`}>
+                          {item.level}
                         </span>
                       </div>
                     </div>

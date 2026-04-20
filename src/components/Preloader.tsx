@@ -26,7 +26,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
 
                 <div className="relative z-10 flex flex-col items-center animate-bounce-slight">
                     {/* Logo White (Since bg is black) */}
-                    <img src="/images/logo/XPACE PERFIL BRANCO.png" alt="XPACE Loading" className="w-48 md:w-64 h-auto animate-pulse" />
+                    <img src="/images/logo/XPACE%20PERFIL%20BRANCO.png" alt="XPACE Loading" className="w-48 md:w-64 h-auto animate-pulse" />
 
                     {/* Loader Bar */}
                     <div className="w-32 h-1 bg-gray-800 rounded-full mt-8 overflow-hidden">

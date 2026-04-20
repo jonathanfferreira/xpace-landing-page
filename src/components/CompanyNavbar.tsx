@@ -52,8 +52,8 @@ export const CompanyNavbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center group cursor-pointer" onClick={closeMenu} title="Voltar ao Hub">
             <div className="flex flex-col items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <img src="/images/logo/XPACE PERFIL PRETO.png" alt="XPACE Logo" className="h-10 w-auto dark:hidden" />
-              <img src="/images/logo/XPACE PERFIL BRANCO.png" alt="XPACE Logo" className="h-10 w-auto hidden dark:block" />
+              <img src="/images/logo/XPACE%20PERFIL%20PRETO.png" alt="XPACE Logo" className="h-10 w-auto dark:hidden" />
+              <img src="/images/logo/XPACE%20PERFIL%20BRANCO.png" alt="XPACE Logo" className="h-10 w-auto hidden dark:block" />
             </div>
           </Link>
 

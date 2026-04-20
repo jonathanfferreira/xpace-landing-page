@@ -8,7 +8,7 @@ interface TeamMember {
   name: string;
   role: string;
   roleColor: 'primary' | 'secondary' | 'tertiary' | 'cyber-pink';
-  image: string;
+  image?: string;
   description: string;
   instagram?: string;
 }
@@ -40,7 +40,6 @@ const teachersData: TeamMember[] = [
     role: "Hip Hop & House",
     roleColor: "cyber-pink",
     description: "Hip Hop & House",
-    image: "/images/teachers/alana.jpg",
     instagram: "https://www.instagram.com/veigalanaa/"
   },
   {
@@ -49,7 +48,6 @@ const teachersData: TeamMember[] = [
     role: "Jazz & Contemporâneo",
     roleColor: "tertiary",
     description: "Jazz & Contemporâneo",
-    image: "/images/teachers/bianca.webp",
     instagram: "https://www.instagram.com/biancamarceela/"
   },
   {
@@ -58,7 +56,6 @@ const teachersData: TeamMember[] = [
     role: "Vogue • Jazz Funk",
     roleColor: "cyber-pink",
     description: "Vogue • Jazz Funk • Waacking",
-    image: "/images/teachers/dil.webp",
     instagram: "https://www.instagram.com/dilschulz/"
   },
   {
@@ -67,7 +64,6 @@ const teachersData: TeamMember[] = [
     role: "Hip Hop & Dancehall",
     roleColor: "primary",
     description: "Hip Hop & Dancehall",
-    image: "/images/teachers/dudabiz.jpg",
     instagram: "https://www.instagram.com/dudabizs/"
   },
   {
@@ -76,7 +72,6 @@ const teachersData: TeamMember[] = [
     role: "Jazz Funk & Femme Style",
     roleColor: "cyber-pink",
     description: "Jazz Funk, Waacking & Heels",
-    image: "/images/teachers/gus.jpg",
     instagram: "https://www.instagram.com/gusjoesting/"
   },
   {
@@ -84,17 +79,7 @@ const teachersData: TeamMember[] = [
     name: "Eduarda Rodrigues",
     role: "Heels & Jazz Funk",
     roleColor: "secondary",
-    description: "Heels & Jazz Funk",
-    image: "/images/teachers/eduarda.webp"
-  },
-  {
-    id: 5,
-    name: "Engels",
-    role: "Vogue & Waacking",
-    roleColor: "primary",
-    description: "Vogue & Waacking",
-    image: "/images/teachers/engels.webp",
-    instagram: "https://www.instagram.com/engelsmatheus_/"
+    description: "Heels & Jazz Funk"
   },
   {
     id: 11,
@@ -102,7 +87,6 @@ const teachersData: TeamMember[] = [
     role: "Dança de Salão",
     roleColor: "primary",
     description: "Dança de Salão",
-    image: "/images/teachers/icaro.jpg",
     instagram: "https://www.instagram.com/icaroalvesdancer/"
   },
   {
@@ -111,7 +95,6 @@ const teachersData: TeamMember[] = [
     role: "Hip Hop",
     roleColor: "secondary",
     description: "Hip Hop",
-    image: "/images/teachers/isis.webp",
     instagram: "https://www.instagram.com/isislkr/"
   },
   {
@@ -120,17 +103,14 @@ const teachersData: TeamMember[] = [
     role: "Dancehall & Hip Hop",
     roleColor: "tertiary",
     description: "Dancehall & Hip Hop",
-    image: "/images/teachers/jhonney.webp",
     instagram: "https://www.instagram.com/jhonney.xp/"
   },
-
   {
     id: 8,
     name: "Lóren Stefany",
     role: "Hip Hop & House",
     roleColor: "primary",
     description: "Hip Hop & House",
-    image: "/images/teachers/loren.webp",
     instagram: "https://www.instagram.com/ftloren/"
   },
   {
@@ -139,7 +119,6 @@ const teachersData: TeamMember[] = [
     role: "Dancehall",
     roleColor: "secondary",
     description: "Dancehall",
-    image: "/images/teachers/lucasmaciel.jpg",
     instagram: "https://www.instagram.com/lucasmacieldx/"
   },
   {
@@ -148,7 +127,6 @@ const teachersData: TeamMember[] = [
     role: "Hip Hop",
     roleColor: "tertiary",
     description: "Hip Hop",
-    image: "/images/teachers/marcelinho.jpg",
     instagram: "https://www.instagram.com/marcelinho_hiphop/"
   },
   {
@@ -157,7 +135,6 @@ const teachersData: TeamMember[] = [
     role: "Fundador e Coreógrafo",
     roleColor: "secondary",
     description: "Fundador e Coreógrafo",
-    image: "/images/teachers/ruan.jpg",
     instagram: "https://www.instagram.com/ruan_amrm/"
   },
   {
@@ -166,8 +143,15 @@ const teachersData: TeamMember[] = [
     role: "Hip Hop & Jazz Funk",
     roleColor: "tertiary",
     description: "Hip Hop & Jazz Funk",
-    image: "/images/teachers/samuel.jpg",
     instagram: "https://www.instagram.com/samuzek/"
+  },
+  {
+    id: 17,
+    name: "Lisbeth",
+    role: "K-Pop",
+    roleColor: "cyber-pink",
+    description: "K-Pop",
+    instagram: "https://www.instagram.com/lisbeth._.gabriela/"
   }
 ];
 
@@ -189,11 +173,13 @@ const TeamCard: React.FC<{
       </div>
 
       <div className="relative h-[420px] p-4 flex flex-col items-center justify-end z-10">
-        <div className="absolute inset-0 overflow-hidden mx-0 mt-0 mb-0 grayscale group-hover:grayscale-0 transition-all duration-500">
-          <img alt={`${member.name} - ${member.role}`} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" src={member.image} onError={(e) => {
-            // Fallback for missing images
-            e.currentTarget.src = 'https://ui-avatars.com/api/?name=' + member.name.replace(' ', '+') + '&background=random';
-          }} />
+        <div className={`absolute inset-0 overflow-hidden mx-0 mt-0 mb-0 transition-all duration-500 ${member.image ? 'grayscale group-hover:grayscale-0' : ''}`}>
+          {member.image && (
+            <img alt={`${member.name} - ${member.role}`} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" src={`${member.image}?v=2`} onError={(e) => {
+              // Fallback for missing images
+              e.currentTarget.style.display = 'none';
+            }} />
+          )}
 
           {/* Glitch Overlay Effect */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-cyber-pink mix-blend-color-dodge transition-opacity duration-300"></div>
@@ -248,7 +234,7 @@ export const Teachers: React.FC = () => {
         </div>
 
         {/* Directors Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}

@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { playHoverSound, playClickSound } from '../utils/audio';
 
 export const MagneticButton = ({ children, className, onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,11 +21,9 @@ export const MagneticButton = ({ children, className, onClick }: { children: Rea
   };
 
   const handleMouseEnter = () => {
-    playHoverSound();
   };
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    playClickSound();
     if (onClick) onClick();
   };
 
