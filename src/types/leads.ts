@@ -19,6 +19,13 @@ export interface LeadInput {
   quizResult?: string;
   quizAnswers?: Record<string, number>;
   website?: string;
+  age?: number;
+  preferredModalities?: string[];
+  experience?: string;
+  availability?: string[];
+  objective?: string;
+  recommendedClassIds?: string[];
+  selectedClassId?: string;
 }
 export interface LeadPayload extends LeadInput, LeadAttribution { requestId: string }
 export interface LeadResponse {

@@ -72,19 +72,44 @@ function validateLead(input, expectedType) {
     const page = text(data, 'page', 300);
     if (page && (!page.startsWith('/') || /[?#]/.test(page)))
         throw new LeadError('INVALID_PAGE');
-    const quizResult = text(data, 'quizResult', 100, leadType === 'QUIZ');
+    const isLegacyQuiz = leadType === 'QUIZ' && !data.recommendedClassIds && data.age === undefined;
+    const quizResult = text(data, 'quizResult', 100, isLegacyQuiz);
     const quizAnswers = {};
+    let age;
+    if (data.age !== undefined) {
+        if (typeof data.age !== 'number' || !Number.isInteger(data.age) || data.age < 1 || data.age > 120) {
+            throw new LeadError('INVALID_AGE');
+        }
+        age = data.age;
+    }
+    const preferredModalities = Array.isArray(data.preferredModalities)
+        ? data.preferredModalities.filter((item) => typeof item === 'string').map(s => s.slice(0, 50)).slice(0, 15)
+        : undefined;
+    const experience = text(data, 'experience', 50) || undefined;
+    const availability = Array.isArray(data.availability)
+        ? data.availability.filter((item) => typeof item === 'string').map(s => s.slice(0, 50)).slice(0, 10)
+        : undefined;
+    const objective = text(data, 'objective', 100) || undefined;
+    const recommendedClassIds = Array.isArray(data.recommendedClassIds)
+        ? data.recommendedClassIds.filter((item) => typeof item === 'string').map(s => s.slice(0, 80)).slice(0, 10)
+        : undefined;
+    const selectedClassId = text(data, 'selectedClassId', 80) || undefined;
     if (leadType === 'QUIZ') {
         const answers = data.quizAnswers;
-        if (!answers || typeof answers !== 'object' || Array.isArray(answers))
-            throw new LeadError('INVALID_QUIZ');
-        const entries = Object.entries(answers);
-        if (!entries.length || entries.length > 20)
-            throw new LeadError('INVALID_QUIZ');
-        for (const [key, value] of entries.sort(([a], [b]) => a.localeCompare(b))) {
-            if (!/^[a-zA-Z][a-zA-Z0-9_-]{0,39}$/.test(key) || ['__proto__', 'constructor', 'prototype'].includes(key) || typeof value !== 'number' || !Number.isInteger(value) || value < 0 || value > 100)
+        if (answers && typeof answers === 'object' && !Array.isArray(answers)) {
+            const entries = Object.entries(answers);
+            if (!entries.length && !recommendedClassIds && age === undefined)
                 throw new LeadError('INVALID_QUIZ');
-            quizAnswers[key] = value;
+            if (entries.length > 20)
+                throw new LeadError('INVALID_QUIZ');
+            for (const [key, value] of entries.sort(([a], [b]) => a.localeCompare(b))) {
+                if (!/^[a-zA-Z][a-zA-Z0-9_-]{0,39}$/.test(key) || ['__proto__', 'constructor', 'prototype'].includes(key) || typeof value !== 'number' || !Number.isInteger(value) || value < 0 || value > 100)
+                    throw new LeadError('INVALID_QUIZ');
+                quizAnswers[key] = value;
+            }
+        }
+        else if (!recommendedClassIds && age === undefined) {
+            throw new LeadError('INVALID_QUIZ');
         }
     }
     const utmSource = text(data, 'utmSource', 200);
@@ -96,10 +121,7 @@ function validateLead(input, expectedType) {
         const host = new URL(safeReferrer).hostname;
         source = /(^|\.)instagram\.com$/.test(host) ? 'INSTAGRAM' : /(^|\.)google\.[a-z.]+$/.test(host) ? 'GOOGLE' : 'SITE';
     }
-    return { requestId, name, phone: normalizePhone(data.phone), leadType, email,
-        message: text(data, 'message', 2000, leadType === 'CONTACT'), intent: text(data, 'intent', 120) || (leadType === 'QUIZ' ? 'quiz_result' : 'contact'),
-        page, referrer: safeReferrer, source, utmSource, utmMedium: text(data, 'utmMedium', 200), utmCampaign: text(data, 'utmCampaign', 200), utmContent: text(data, 'utmContent', 200), utmTerm: text(data, 'utmTerm', 200),
-        quizResult: leadType === 'QUIZ' ? quizResult : '', quizAnswers };
+    return Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ requestId, name, phone: normalizePhone(data.phone), leadType, email, message: text(data, 'message', 2000, leadType === 'CONTACT'), intent: text(data, 'intent', 120) || (leadType === 'QUIZ' ? 'quiz_result' : 'contact'), page, referrer: safeReferrer, source, utmSource, utmMedium: text(data, 'utmMedium', 200), utmCampaign: text(data, 'utmCampaign', 200), utmContent: text(data, 'utmContent', 200), utmTerm: text(data, 'utmTerm', 200), quizResult: leadType === 'QUIZ' ? quizResult : '', quizAnswers }, (age !== undefined ? { age } : {})), (preferredModalities ? { preferredModalities } : {})), (experience ? { experience } : {})), (availability ? { availability } : {})), (objective ? { objective } : {})), (recommendedClassIds ? { recommendedClassIds } : {})), (selectedClassId ? { selectedClassId } : {}));
 }
 exports.validateLead = validateLead;
 //# sourceMappingURL=validation.js.map

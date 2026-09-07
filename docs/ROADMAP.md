@@ -18,7 +18,7 @@ O roadmap foi desenhado para otimizar progressivamente o funil de aquisição:
 ### ✅ Fase 2 — XPACE Lead Engine Foundation (Concluída)
 - Pipeline seguro de ingestão de leads no backend (Firebase Functions v1).
 - Validação server-side estrita com normalização de telefone brasileiro.
-- Proteção anti-spam proporcional com campo honeypot invisível.
+- Proteção anti-spam com campo honeypot invisível.
 - Persistência atômica no Firestore antes de chamadas de mensageria externa.
 - Idempotência baseada em `requestId` retido e hash SHA-256 do payload.
 - Integração desacoplada com Evolution API (WhatsApp) e fallback seguro (`NOT_CONFIGURED`).
@@ -26,16 +26,18 @@ O roadmap foi desenhado para otimizar progressivamente o funil de aquisição:
 - Página de privacidade (`/privacy`) e regras de bloqueio direto no Firestore (`firestore.rules`).
 - 17 testes automatizados cobrindo todos os cenários de persistência e segurança.
 
-### 🟡 Fase 3 — XPACE Enrollment Funnel (Em andamento)
-- **Objetivo**: Substituir o quiz genérico por um funil comercial determinístico: **"Encontre sua Turma"**.
-- **Fonte única de dados de turmas**: Catálogo tipado e estruturado compartilhado entre a grade (`components/Schedule.tsx`) e o funil.
-- **Matching Engine Determinístico**: Algoritmo de ranqueamento baseado em compatibilidade estrita de idade, modalidade, nível, dias/períodos disponíveis e objetivo pedagógico.
-- **Experiência Mobile-First**: Percurso fluído de 5 perguntas simples orientando o visitante até 1 a 3 turmas ideais reais.
-- **Agendamento Facilitado**: CTA claro para solicitação de aula experimental, integrando dados ao Lead Engine da Fase 2 e conectando ao link de agendamento NextFit com rastreio da turma escolhida.
+### ✅ Fase 3 — XPACE Enrollment Funnel (Concluída)
+- **Substituição do Quiz Genérico**: Novo funil comercial determinístico **"Encontre sua Turma"** (`src/components/EnrollmentFunnel/EnrollmentModal.tsx`).
+- **Catálogo Único de Turmas**: Catálogo centralizado (`src/data/classes.ts`) com mais de 44 turmas ativas, alimentando tanto a grade pública (`components/Schedule.tsx`) quanto o algoritmo de recomendação.
+- **Matching Engine Determinístico**: Algoritmo de filtragem e ranqueamento (`src/services/classMatcher.ts`) por idade, modalidade, nível, dias/períodos e objetivo de aprendizado (sem IA, 100% determinístico).
+- **Experiência Mobile-First**: Percurso fluido de 6 etapas orientando o visitante até 1 a 3 turmas ideais com motivos de compatibilidade.
+- **Agendamento com Rastreamento**: CTAs diretos para agendamento via NextFit (`https://agendamento.nextfit.com.br/f9b1ea53-0e0e-4f98-9396-3dab7c9fbff4`) e contato via WhatsApp com mensagem personalizada.
+- **Integração Backend**: Ingestão completa no Lead Engine com validação estrita de novos atributos (`age`, `preferredModalities`, `experience`, `availability`, `objective`, `recommendedClassIds`, `selectedClassId`).
+- **Cobertura de Testes**: 34 testes automatizados unificados (`npm test`) validando todas as regras do catálogo, ranqueamento e backend.
 
-### ⚪ Fase 4 — XPACE CRM
+### 🟡 Fase 4 — XPACE CRM (Próxima Fase)
 - Gestão centralizada dos leads captados, organizados por estágio do funil (Novo, Contatado, Aula Agendada, Compareceu, Não Compareceu, Matriculado, Perdido).
-- Visão operacional para a secretaria da escola.
+- Visão operacional para a secretaria e coordenação da escola.
 
 ### ⚪ Fase 5 — Agente Comercial / WhatsApp
 - Atendimento automatizado ágil via WhatsApp conectado à Evolution API.

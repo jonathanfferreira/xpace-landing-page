@@ -18,7 +18,7 @@ import { Location } from '../../components/Location';
 import { Preloader } from '../../components/Preloader';
 import { FloatingWhatsApp } from '../../components/FloatingWhatsApp';
 import { XpacePro } from '../../components/XpacePro';
-import { QuizModal } from '../components/Quiz/QuizModal'; // Quiz Component
+import { EnrollmentModal } from '../components/EnrollmentFunnel';
 import { InstagramFeed } from '../../components/InstagramFeed';
 import { SEO } from '../../components/SEO';
 
@@ -95,8 +95,8 @@ export const Escola: React.FC = () => {
       <Footer />
       <FloatingWhatsApp />
 
-      {/* GLOBAL QUIZ MODAL */}
-      <QuizModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
+      {/* GLOBAL ENROLLMENT FUNNEL MODAL */}
+      <EnrollmentModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
     </div>
   );
 };
