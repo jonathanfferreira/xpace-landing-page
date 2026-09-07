@@ -395,4 +395,96 @@ describe('XPACE Lead Engine Foundation Tests (Phase 2)', () => {
       assert.equal(res.user.status, 'NOT_CONFIGURED');
     });
   });
+
+  // ==========================================
+  // FASE 3: FUNIL DETERMINÍSTICO DE MATRÍCULA
+  // ==========================================
+  describe('Fase 3: Funil de Matrícula (Enrollment Funnel Lead Handling)', () => {
+    it('valida e normaliza payload do funil com atributos completos', () => {
+      const funnelPayload = {
+        requestId: '55555555-5555-4555-8555-555555555555',
+        name: 'Camila Rodrigues',
+        phone: '47991112233',
+        leadType: 'QUIZ',
+        age: 19,
+        preferredModalities: ['STREET_DANCE', 'HEELS'],
+        experience: 'INICIANTE',
+        availability: ['NOITE', 'SÁBADO'],
+        objective: 'DIVERSAO_E_SAUDE',
+        recommendedClassIds: ['street-iniciante-ter-qui-1900', 'heels-iniciante-seg-2000'],
+        selectedClassId: 'street-iniciante-ter-qui-1900',
+        intent: 'enrollment_funnel'
+      };
+
+      const valid = validateLead(funnelPayload);
+      assert.equal(valid.leadType, 'QUIZ');
+      assert.equal(valid.age, 19);
+      assert.deepEqual(valid.preferredModalities, ['STREET_DANCE', 'HEELS']);
+      assert.equal(valid.experience, 'INICIANTE');
+      assert.deepEqual(valid.availability, ['NOITE', 'SÁBADO']);
+      assert.equal(valid.objective, 'DIVERSAO_E_SAUDE');
+      assert.deepEqual(valid.recommendedClassIds, ['street-iniciante-ter-qui-1900', 'heels-iniciante-seg-2000']);
+      assert.equal(valid.selectedClassId, 'street-iniciante-ter-qui-1900');
+      assert.equal(valid.intent, 'enrollment_funnel');
+    });
+
+    it('rejeita idade inválida no funil (menor que 1 ou maior que 120)', () => {
+      assert.throws(() => {
+        validateLead({
+          requestId: '66666666-6666-4666-8666-666666666666',
+          name: 'Teste Menor Idade',
+          phone: '47991112233',
+          leadType: 'QUIZ',
+          age: -5
+        });
+      }, (err) => err instanceof LeadError && err.code === 'INVALID_AGE');
+
+      assert.throws(() => {
+        validateLead({
+          requestId: '77777777-7777-4777-8777-777777777777',
+          name: 'Teste Maior Idade',
+          phone: '47991112233',
+          leadType: 'QUIZ',
+          age: 150
+        });
+      }, (err) => err instanceof LeadError && err.code === 'INVALID_AGE');
+    });
+
+    it('persiste lead do funil no service mantendo idempotência', async () => {
+      const store = createMockStore();
+      const mockSendMessages = async () => ({
+        user: { status: 'NOT_CONFIGURED', error: null, sentAt: null },
+        internal: { status: 'NOT_CONFIGURED', error: null, sentAt: null }
+      });
+      const service = createLeadService({ store, sendMessages: mockSendMessages, log: mockLog });
+
+      const funnelInput = {
+        requestId: '88888888-8888-4888-8888-888888888888',
+        name: 'Lucas Ferreira',
+        phone: '47992223344',
+        leadType: 'QUIZ',
+        age: 15,
+        preferredModalities: ['K_POP'],
+        experience: 'INICIANTE',
+        recommendedClassIds: ['kpop-teen-seg-qua-1700'],
+        intent: 'enrollment_funnel'
+      };
+
+      const validated = validateLead(funnelInput);
+      const res1 = await service(validated);
+      assert.equal(res1.persisted, true);
+      assert.equal(res1.leadId, funnelInput.requestId);
+
+      // Retry com mesmo payload retorna created: false sem erro
+      const res2 = await service(validated);
+      assert.equal(res2.persisted, true);
+      assert.equal(res2.leadId, funnelInput.requestId);
+
+      // Verificação de dados salvos na store
+      const saved = store.db.get(funnelInput.requestId);
+      assert.equal(saved.age, 15);
+      assert.deepEqual(saved.preferredModalities, ['K_POP']);
+      assert.deepEqual(saved.recommendedClassIds, ['kpop-teen-seg-qua-1700']);
+    });
+  });
 });

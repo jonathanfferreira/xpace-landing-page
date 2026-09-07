@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:matcher": "node node_modules/typescript/bin/tsc src/services/classMatcher.ts src/data/classes.ts --outDir test-dist --module commonjs --target es2020 && node --test test/funnel-matching.test.cjs",
+    "test": "npm run test:matcher && npm --prefix functions test"
   },
   "dependencies": {
     "firebase-tools": "^15.2.0",

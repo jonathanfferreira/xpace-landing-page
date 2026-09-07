@@ -72,10 +72,14 @@ function validateLead(input, expectedType) {
     const page = text(data, 'page', 300);
     if (page && (!page.startsWith('/') || /[?#]/.test(page)))
         throw new LeadError('INVALID_PAGE');
-    const quizResult = text(data, 'quizResult', 100, leadType === 'QUIZ');
+    const isLegacyQuiz = leadType === 'QUIZ' && !data.recommendedClassIds && data.age === undefined;
+    const quizResult = text(data, 'quizResult', 100, isLegacyQuiz);
     const quizAnswers = {};
     let age;
-    if (typeof data.age === 'number' && Number.isInteger(data.age) && data.age >= 1 && data.age <= 120) {
+    if (data.age !== undefined) {
+        if (typeof data.age !== 'number' || !Number.isInteger(data.age) || data.age < 1 || data.age > 120) {
+            throw new LeadError('INVALID_AGE');
+        }
         age = data.age;
     }
     const preferredModalities = Array.isArray(data.preferredModalities)
