@@ -16,18 +16,26 @@ interface TeamMember {
 const directorsData: TeamMember[] = [
   {
     id: 101,
-    name: "Alceu",
-    role: "Diretor Financeiro e Administrativo",
+    name: "Alceu de Miranda Junior",
+    role: "Diretor Financeiro",
     roleColor: "primary",
-    description: "Diretor Financeiro e Administrativo",
+    description: "Diretor Financeiro",
     image: "/images/teachers/alceu.jpg"
+  },
+  {
+    id: 102,
+    name: "Tayonara Cristina",
+    role: "Diretora Administrativa",
+    roleColor: "cyber-pink",
+    description: "Sócia e Diretora Administrativa",
+    image: "/images/teachers/tayonara.jpg"
   },
   {
     id: 7,
     name: "Jhonney",
-    role: "Diretor Artístico e Marketing",
-    roleColor: "tertiary",
-    description: "Diretor Artístico e Marketing",
+    role: "Diretor Artístico",
+    roleColor: "secondary",
+    description: "Diretor Artístico",
     image: "/images/teachers/jhonney-director.jpg",
     instagram: "https://www.instagram.com/jhonney.xp/"
   }

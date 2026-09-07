@@ -16,18 +16,26 @@ interface TeamMember {
 const directorsData: TeamMember[] = [
   {
     id: 101,
-    name: "Alceu",
-    role: "Diretor Financeiro e Administrativo",
+    name: "Alceu de Miranda Junior",
+    role: "Diretor Financeiro",
     roleColor: "primary",
-    description: "Diretor Financeiro e Administrativo",
+    description: "Diretor Financeiro",
     image: "/images/teachers/alceu.jpg"
+  },
+  {
+    id: 102,
+    name: "Tayonara Cristina",
+    role: "Diretora Administrativa",
+    roleColor: "cyber-pink",
+    description: "Sócia e Diretora Administrativa",
+    image: "/images/teachers/tayonara.jpg"
   },
   {
     id: 7,
     name: "Jhonney",
-    role: "Diretor Artístico e Marketing",
-    roleColor: "tertiary",
-    description: "Diretor Artístico e Marketing",
+    role: "Diretor Artístico",
+    roleColor: "secondary",
+    description: "Diretor Artístico",
     image: "/images/teachers/jhonney-director.jpg",
     instagram: "https://www.instagram.com/jhonney.xp/"
   }
@@ -186,7 +194,7 @@ const TeamCard: React.FC<{
         </div>
 
         <div className="w-full relative z-20 text-white pb-4 px-2">
-          <h3 className="font-display text-3xl font-black leading-none mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">{member.name}</h3>
+          <h3 className="font-display text-2xl lg:text-3xl font-black leading-tight mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">{member.name}</h3>
           <div className="flex justify-between items-end border-t border-white/20 pt-3 group-hover:border-white/50 transition-colors">
             <p className={`text-xs font-bold text-${member.roleColor === 'primary' ? 'primary' : member.roleColor === 'secondary' ? 'secondary' : member.roleColor === 'tertiary' ? 'tertiary' : 'cyber-pink'} tracking-widest uppercase bg-white/10 backdrop-blur-md px-2 py-1 rounded shadow-[0_0_10px_rgba(0,0,0,0.5)]`}>{member.role}</p>
           </div>

@@ -42,7 +42,10 @@ export const About: React.FC = () => {
                                 A grande virada de chave ocorreu em <strong>setembro de 2024</strong>, com a chegada dos sócios <strong>Jhonney</strong> e <strong>Alceu de Miranda Junior</strong>. Essa união trouxe uma explosão de resultados, garantindo já em outubro a prestigiada vaga como <strong>Seleção Brasileira no Hip Hop Unite</strong>.
                             </p>
                             <p>
-                                Em <strong>2025</strong>, consolidamos nossa expansão, saltando de 60 para mais de 110 alunos e estruturando a escola em dois pilares fundamentais: <strong>XPACE Escola de Dança</strong> (ensino e formação) e <strong>XPACE Dance Company</strong> (alta performance).
+                                Em <strong>2025</strong>, consolidamos nossa expansão, saltando de 60 para mais de 110 alunos e fortalecendo o ensino e a formação na <strong>XPACE Escola de Dança</strong>, que conta com a <strong>XPACE Dance Company</strong> como seu núcleo competitivo de alta performance.
+                            </p>
+                            <p>
+                                Hoje, a escola é liderada pela sociedade entre <strong>Jhonney</strong> (Diretor Artístico), <strong>Alceu de Miranda Junior</strong> (Diretor Financeiro) e <strong>Tayonara Cristina</strong> (Diretora Administrativa), unindo inovação artística, solidez financeira e excelência na gestão.
                             </p>
                         </div>
                     </div>
@@ -52,15 +55,26 @@ export const About: React.FC = () => {
                 <div className="mt-20">
                     <h3 className="font-display text-center text-3xl font-black mb-12 uppercase text-text-main-light dark:text-text-main-dark">Liderança <span className="text-primary">Visionária</span></h3>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                         {/* Alceu */}
-                        <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-cyber-pink transition-colors duration-300 group">
+                        <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors duration-300 group">
                             <div className="mb-6">
-                                <h4 className="font-display text-2xl font-black uppercase mb-1">Alceu de Miranda Jr</h4>
-                                <p className="font-tech text-xs text-cyber-pink font-bold tracking-widest uppercase">Diretor Financeiro e Administrativo</p>
+                                <h4 className="font-display text-2xl font-black uppercase mb-1">Alceu de Miranda Junior</h4>
+                                <p className="font-tech text-xs text-primary font-bold tracking-widest uppercase">Diretor Financeiro</p>
                             </div>
                             <p className="font-body text-sm text-gray-500 leading-relaxed">
-                                O alicerce da organização. Comanda toda a administração financeira e gestão interna, garantindo a sustentabilidade e organização do negócio.
+                                O alicerce financeiro da organização. Comanda o planejamento orçamentário, sustentabilidade econômica e gestão de recursos da escola.
+                            </p>
+                        </div>
+
+                        {/* Tayonara */}
+                        <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-cyber-pink transition-colors duration-300 group">
+                            <div className="mb-6">
+                                <h4 className="font-display text-2xl font-black uppercase mb-1">Tayonara Cristina</h4>
+                                <p className="font-tech text-xs text-cyber-pink font-bold tracking-widest uppercase">Diretora Administrativa</p>
+                            </div>
+                            <p className="font-body text-sm text-gray-500 leading-relaxed">
+                                Sócia e gestora das operações escolares. Lidera a administração interna, rotinas da escola e atendimento, garantindo organização e acolhimento.
                             </p>
                         </div>
 
@@ -68,10 +82,10 @@ export const About: React.FC = () => {
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-secondary transition-colors duration-300 group">
                             <div className="mb-6">
                                 <h4 className="font-display text-2xl font-black uppercase mb-1">Jhonney</h4>
-                                <p className="font-tech text-xs text-secondary font-bold tracking-widest uppercase">Diretor Artístico e Marketing</p>
+                                <p className="font-tech text-xs text-secondary font-bold tracking-widest uppercase">Diretor Artístico</p>
                             </div>
                             <p className="font-body text-sm text-gray-500 leading-relaxed">
-                                A alma criativa da escola. Gerencia a direção artística completa e o marketing, cria coreografias premiadas, roteiriza espetáculos e gere o corpo docente.
+                                A alma criativa da escola. Gerencia a direção artística completa e o desenvolvimento pedagógico, cria coreografias premiadas, roteiriza espetáculos e lidera o corpo docente.
                             </p>
                         </div>
                     </div>
