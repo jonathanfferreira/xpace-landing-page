@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // XPACE Phase 2: Acesso direto de clientes ao Firestore é completamente bloqueado.
+    // Todas as operações de leads são realizadas com validação prévia via Cloud Functions (Admin SDK).
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

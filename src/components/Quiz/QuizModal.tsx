@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { QUESTIONS, RESULTS } from '../../data/quizData';
-import { X, ArrowRight, Check, Loader2 } from 'lucide-react';
+import { X, ArrowRight, Loader2 } from 'lucide-react';
+import { useLeadSubmission } from '../../hooks/useLeadSubmission';
+import { LeadPrivacyNotice } from '../LeadPrivacyNotice';
+import { LeadHoneypot } from '../LeadHoneypot';
 
 interface QuizModalProps {
     isOpen: boolean;
@@ -13,7 +16,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [scores, setScores] = useState<Record<string, number>>({});
     const [leadData, setLeadData] = useState({ name: '', phone: '' });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { submit, status, error, response } = useLeadSubmission();
+    const isSubmitting = status === 'submitting';
+    const [website, setWebsite] = useState('');
     const [finalResult, setFinalResult] = useState<string>('');
 
     const handleStart = () => setStep('question');
@@ -51,29 +56,12 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
 
     const handleSubmitLead = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            // Send to API (Cloud Function)
-            await fetch('https://us-central1-xpace-premium-96518327-b22be.cloudfunctions.net/api/quiz', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: leadData.name,
-                    phone: leadData.phone,
-                    result: RESULTS[finalResult]?.title || finalResult,
-                    answers: scores
-                }),
-            });
-            // Always succeed to user perception
-        } catch (err) {
-            console.error("Quiz submission error", err);
-        }
-
-        setIsSubmitting(false);
-        setStep('result');
+        const saved = await submit({
+            leadType: 'QUIZ', name: leadData.name, phone: leadData.phone,
+            quizResult: RESULTS[finalResult]?.title || finalResult, quizAnswers: scores,
+            intent: 'quiz_result', website,
+        });
+        if (saved) setStep('result');
     };
 
     // --- RENDERS ---
@@ -91,10 +79,10 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="relative w-full max-w-lg overflow-hidden glass-panel rounded-2xl"
+                    className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto glass-panel rounded-2xl"
                 >
                     {/* Close Button */}
-                    <button onClick={onClose} className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-10">
+                    <button aria-label="Fechar quiz" onClick={onClose} className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-10">
                         <X size={24} />
                     </button>
 
@@ -156,14 +144,17 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
                             <div className="text-center space-y-6">
                                 <h2 className="text-2xl font-bold text-white">Quase lá! ✨</h2>
                                 <p className="text-gray-300 text-sm">
-                                    Seu resultado já foi calculado. Digite seu WhatsApp para receber o resultado e desbloquear um presente especial.
+                                    Seu resultado já foi calculado. Deixe seu contato para saber mais sobre as aulas da XPACE.
                                 </p>
 
                                 <form onSubmit={handleSubmitLead} className="space-y-4">
+                                    <LeadHoneypot value={website} onChange={setWebsite} />
+                                    <fieldset disabled={isSubmitting} className="space-y-4">
                                     <div className="space-y-2">
                                         <input
                                             type="text"
                                             placeholder="Seu Nome"
+                                            aria-label="Seu Nome" minLength={2} maxLength={100}
                                             required
                                             className="w-full bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-[--color-primary] focus:outline-none placeholder:text-gray-600"
                                             value={leadData.name}
@@ -172,6 +163,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
                                         <input
                                             type="tel"
                                             placeholder="Seu WhatsApp (com DDD)"
+                                            aria-label="Seu WhatsApp (com DDD)" maxLength={24}
                                             required
                                             className="w-full bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-[--color-primary] focus:outline-none placeholder:text-gray-600"
                                             value={leadData.phone}
@@ -179,14 +171,18 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
                                         />
                                     </div>
 
+                                    <LeadPrivacyNotice />
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
                                         className="cyber-button w-full flex items-center justify-center gap-2"
                                     >
-                                        {isSubmitting ? <Loader2 className="animate-spin" /> : 'Ver Resultado'}
+                                        {isSubmitting ? <Loader2 aria-label="Enviando" className="animate-spin" /> : status === 'error' ? 'Tentar novamente' : 'Ver Resultado'}
                                     </button>
+                                    </fieldset>
+                                    {error && <p role="alert" className="text-red-300 text-sm normal-case">{error}</p>}
                                 </form>
+                                {error && <button onClick={() => setStep('result')} className="text-sm text-white underline">Ver meu resultado sem registrar contato</button>}
                             </div>
                         )}
 
@@ -210,9 +206,10 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
                                     >
                                         Agendar Aula Agora
                                     </a>
-                                    <p className="text-xs text-gray-500">
-                                        *Também te mandamos esse resultado no WhatsApp! 📱
+                                    <p role="status" className="text-xs text-gray-300 normal-case">
+                                        {response?.persisted ? (response.messaging.user === 'SENT' ? 'Contato registrado. A confirmação foi encaminhada ao WhatsApp informado.' : 'Contato registrado. A confirmação por WhatsApp ainda não está disponível.') : 'Seu resultado está disponível, mas não conseguimos confirmar o registro do contato.'}
                                     </p>
+                                    {!response?.persisted && <button onClick={() => setStep('lead')} className="text-white underline text-sm">Tentar registrar meu contato novamente</button>}
                                 </div>
                             </div>
                         )}

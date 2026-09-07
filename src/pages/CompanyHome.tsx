@@ -21,14 +21,15 @@ export const CompanyHome: React.FC = () => (
       </Link>
       <Link to="/xtage" className="group rounded-3xl border border-white/15 bg-black/40 p-8 flex flex-col hover:border-secondary focus-visible:outline-2 focus-visible:outline-secondary transition-colors">
         <span className="font-tech text-secondary tracking-widest mb-6">Festivais & eventos</span>
-        <h2 className="font-display text-3xl font-bold mb-4">XTAGE</h2>
+        <h2 className="font-display text-3xl font-bold mb-2">XTAGE</h2>
+        <span className="font-tech text-xs tracking-widest text-gray-400 uppercase mb-4">A product by ECAPX</span>
         <p className="text-gray-300 normal-case leading-relaxed mb-8">Tecnologia para festivais e eventos. Uma plataforma da XPACE Company dedicada à gestão dessas experiências.</p>
         <span className="mt-auto text-sm font-bold">Conheça o XTAGE <span aria-hidden="true">→</span></span>
       </Link>
       <article className="rounded-3xl border border-white/15 bg-black/40 p-8 flex flex-col">
-        <span className="font-tech text-gray-400 tracking-widest mb-6">Novas possibilidades</span>
-        <h2 className="font-display text-3xl font-bold mb-4">Technology</h2>
-        <p className="text-gray-300 normal-case leading-relaxed mb-8">Software, inteligência artificial, automação e futuros produtos digitais do ecossistema XPACE Company.</p>
+        <span className="font-tech text-gray-400 tracking-widest mb-6">Tecnologia & inovação</span>
+        <h2 className="font-display text-3xl font-bold mb-4">ECAPX</h2>
+        <p className="text-gray-300 normal-case leading-relaxed mb-8">A frente de tecnologia e inovação da XPACE Company: software, inteligência artificial, automação e produtos digitais.</p>
         <span className="mt-auto text-sm text-gray-400">Em breve</span>
       </article>
     </section>
