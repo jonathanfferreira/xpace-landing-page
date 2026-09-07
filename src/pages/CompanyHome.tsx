@@ -16,7 +16,7 @@ export const CompanyHome: React.FC = () => (
       <Link to="/dance" className="group rounded-3xl border border-white/15 bg-black/40 p-8 flex flex-col hover:border-secondary focus-visible:outline-2 focus-visible:outline-secondary transition-colors">
         <span className="font-tech text-secondary tracking-widest mb-6">Dança & cultura</span>
         <h2 className="font-display text-3xl font-bold mb-4">XPACE Dance</h2>
-        <p className="text-gray-300 normal-case leading-relaxed mb-8">XPACE Escola de Dança: educação, cultura e performance. Aulas regulares, Dance Company, XPACE PRO, workshops e aluguel de salas.</p>
+        <p className="text-gray-300 normal-case leading-relaxed mb-8">XPACE Escola de Dança: educação, cultura e performance. Aulas regulares, Dance Company, workshops e aluguel de salas.</p>
         <span className="mt-auto text-sm font-bold">Conheça a escola <span aria-hidden="true">→</span></span>
       </Link>
       <Link to="/xtage" className="group rounded-3xl border border-white/15 bg-black/40 p-8 flex flex-col hover:border-secondary focus-visible:outline-2 focus-visible:outline-secondary transition-colors">

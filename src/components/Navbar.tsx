@@ -44,7 +44,6 @@ export const Navbar: React.FC = () => {
     { name: 'Horários', href: '#schedule' },
     { name: 'Aluguel', href: '#rental' },
     { name: 'Planos', href: '#plans' },
-    { name: 'XPACE PRO', href: '#xpace-pro' },
   ];
 
   return (

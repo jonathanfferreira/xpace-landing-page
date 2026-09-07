@@ -17,7 +17,6 @@ import { Footer } from '../../components/Footer';
 import { Location } from '../../components/Location';
 import { Preloader } from '../../components/Preloader';
 import { FloatingWhatsApp } from '../../components/FloatingWhatsApp';
-import { XpacePro } from '../../components/XpacePro';
 import { EnrollmentModal } from '../components/EnrollmentFunnel';
 import { InstagramFeed } from '../../components/InstagramFeed';
 import { SEO } from '../../components/SEO';
@@ -84,7 +83,6 @@ export const Escola: React.FC = () => {
         <Schedule />
         <Rental />
         <Pricing />
-        <XpacePro />
         <Testimonials />
         <CTA />
         <FAQ />
