@@ -80,6 +80,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '19:00',
     room: 'XLAB',
+    teacher: 'Bianca Marcela',
     active: true,
     acceptsTrial: true,
     description: 'Dança contemporânea com foco em fluxo, expressão corporal e exploração de movimento.'
@@ -134,6 +135,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '20:00',
     room: 'XTAGE',
+    teacher: 'Leonardo Silvério',
     active: true,
     acceptsTrial: true,
     description: 'Acrobacias de solo, flexibilidade, força e consciência corporal com segurança.'
@@ -170,6 +172,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '20:00',
     room: 'XLAB',
+    teacher: 'Bianca Marcela',
     active: true,
     acceptsTrial: true,
     description: 'Jazz contemporâneo e comercial para adolescentes explorando técnica e energia.'
@@ -188,6 +191,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '21:00',
     room: 'XPERIENCE',
+    teacher: 'Bianca Marcela',
     active: true,
     acceptsTrial: true,
     description: 'Aulas de Jazz adulto no final da noite com foco em técnica, linhas e bem-estar.'
@@ -210,6 +214,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '19:00',
     room: 'XPERIENCE',
+    teacher: 'Lizbeth',
     active: true,
     acceptsTrial: true,
     description: 'Coreografias e formações dos maiores hits do K-Pop na sala principal XPERIENCE.'
@@ -228,6 +233,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '19:00',
     room: 'XLAB',
+    teacher: 'Natália',
     active: true,
     acceptsTrial: true,
     description: 'Alta queima calórica, diversão, sociabilidade e ritmos contagiantes.'
@@ -264,6 +270,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '19:00',
     room: 'XLAB',
+    teacher: 'Gus Joesting',
     active: true,
     acceptsTrial: true,
     description: 'Energia comercial de videoclipe, estilo e atitude nas terças-feiras.'
@@ -282,6 +289,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '20:00',
     room: 'XCORE',
+    teacher: 'Gus Joesting',
     active: true,
     acceptsTrial: true,
     description: 'Dança no salto alto com empoderamento, postura e linhas nas quintas-feiras.'
@@ -300,6 +308,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '20:00',
     room: 'XPERIENCE',
+    teacher: 'Icaro Alves',
     active: true,
     acceptsTrial: true,
     description: 'Dança a dois tradicional e universitária com descontração e técnica.'
@@ -318,6 +327,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '20:00',
     room: 'XPERIENCE',
+    teacher: 'Icaro Alves',
     active: true,
     acceptsTrial: true,
     description: 'Samba de gafieira: elegância, malandragem, postura e condução.'
@@ -340,6 +350,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'MANHÃ',
     time: '10:00',
     room: 'XLAB',
+    teacher: 'Lizbeth',
     active: true,
     acceptsTrial: true,
     description: 'Nova turma matutina de K-Pop nas sextas-feiras.'
@@ -358,6 +369,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '19:00',
     room: 'XLAB',
+    teacher: 'Samu',
     active: true,
     acceptsTrial: true,
     description: 'Fusão vibrante de danças urbanas com funk e ritmo comercial.'
@@ -376,6 +388,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'NOITE',
     time: '19:00',
     room: 'XPERIENCE',
+    teacher: 'Jhonney',
     active: true,
     acceptsTrial: true,
     description: 'Turma intermediária de danças urbanas para fechar a semana na vibe.'
@@ -416,6 +429,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'MANHÃ',
     time: '09:00',
     room: 'XPERIENCE',
+    teacher: 'Eduarda Rodrigues',
     active: true,
     acceptsTrial: true,
     description: 'Jazz Funk intermediário abrindo os sábados com muita energia na sala principal.'
@@ -434,6 +448,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'MANHÃ',
     time: '10:00',
     room: 'XPERIENCE',
+    teacher: 'Samuel',
     active: true,
     acceptsTrial: true,
     description: 'Danças urbanas para jovens e adultos no fim de semana.'
@@ -452,6 +467,7 @@ export const DANCE_CLASSES: DanceClass[] = [
     period: 'MANHÃ',
     time: '11:00',
     room: 'XPERIENCE',
+    teacher: 'Eduarda Rodrigues',
     active: true,
     acceptsTrial: true,
     description: 'Heels dance intermediário no sábado para desenvolver técnica e palco.'
@@ -499,7 +515,8 @@ export function getWeeklySchedule(): WeeklySchedule {
           activity: danceClass.name,
           room: danceClass.room,
           age: danceClass.ageLabel,
-          classId: danceClass.id
+          classId: danceClass.id,
+          teacher: danceClass.teacher || undefined
         });
       }
     }

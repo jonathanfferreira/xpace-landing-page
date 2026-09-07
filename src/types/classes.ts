@@ -44,6 +44,7 @@ export type ScheduleItem = {
   room: string;
   age?: string;
   classId?: string;
+  teacher?: string;
 };
 
 export type WeeklySchedule = {

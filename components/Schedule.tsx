@@ -36,8 +36,9 @@ const getCategory = (age?: string): string => {
   return 'TEENS'; // 12-17
 };
 
-const openWhatsApp = (activity: string, time: string, day: string) => {
-  const message = `Olá! Vi a aula de *${activity}* de *${day} às ${time}* no site e gostaria de agendar uma experimental.`;
+const openWhatsApp = (activity: string, time: string, day: string, teacher?: string) => {
+  const teacherText = teacher ? ` com prof. ${teacher}` : '';
+  const message = `Olá! Vi a aula de *${activity}*${teacherText} de *${day} às ${time}* no site e gostaria de agendar uma experimental.`;
   const url = `https://wa.me/554791700812?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
@@ -139,13 +140,20 @@ export const Schedule: React.FC = () => {
                       </div>
                     </div>
                     <div className="flex justify-between items-end">
-                      <h3 className="font-display text-xl md:text-2xl font-black text-text-main-light dark:text-text-main-dark uppercase leading-tight group-hover:text-primary transition-colors flex-1 pr-4">
-                        {item.activity}
-                      </h3>
+                      <div className="flex-1 pr-4">
+                        <h3 className="font-display text-xl md:text-2xl font-black text-text-main-light dark:text-text-main-dark uppercase leading-tight group-hover:text-primary transition-colors">
+                          {item.activity}
+                        </h3>
+                        {item.teacher && (
+                          <p className="text-xs font-tech text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1 font-semibold">
+                            Prof. <span className="text-text-main-light dark:text-gray-200">{item.teacher}</span>
+                          </p>
+                        )}
+                      </div>
 
                       {/* WhatsApp Action Button */}
                       <button
-                        onClick={() => openWhatsApp(item.activity, item.time, activeTab)}
+                        onClick={() => openWhatsApp(item.activity, item.time, activeTab, item.teacher)}
                         className="p-2 rounded-full bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)]"
                         title="Agendar Experimental"
                       >
