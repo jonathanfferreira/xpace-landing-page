@@ -21,7 +21,7 @@ export const CompanyHero: React.FC = () => {
           className="mb-6"
         >
           <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary font-tech tracking-widest text-sm border border-secondary/20">
-            A ELITE DA XPACE
+            NÚCLEO COMPETITIVO DA XPACE ESCOLA DE DANÇA
           </span>
         </motion.div>
 
@@ -41,7 +41,7 @@ export const CompanyHero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-body text-lg md:text-xl text-text-muted-light dark:text-text-muted-dark max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          Nossa equipe de competição e performances. O mais alto nível de excelência artística, técnica e representação da marca XPACE nos palcos do Brasil e do mundo.
+          A equipe competitiva da XPACE Escola de Dança. Bailarinos selecionados para representar a escola em festivais, competições e performances no Brasil e no mundo.
         </motion.p>
 
         <motion.div

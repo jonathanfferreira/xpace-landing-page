@@ -1,4 +1,7 @@
 {
+    "firestore": {
+        "rules": "firestore.rules"
+    },
     "hosting": {
         "public": "dist",
         "ignore": [
@@ -8,8 +11,34 @@
         ],
         "rewrites": [
             {
+                "source": "/api/**",
+                "function": "api"
+            },
+            {
                 "source": "**",
                 "destination": "/index.html"
+            }
+        ],
+        "redirects": [
+            {
+                "source": "/escola",
+                "destination": "/dance",
+                "type": 301
+            },
+            {
+                "source": "/escola/",
+                "destination": "/dance",
+                "type": 301
+            },
+            {
+                "source": "/company",
+                "destination": "/dance/company",
+                "type": 301
+            },
+            {
+                "source": "/company/",
+                "destination": "/dance/company",
+                "type": 301
             }
         ]
     },

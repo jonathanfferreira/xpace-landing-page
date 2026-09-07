@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Features: React.FC = () => {
   const items = [
@@ -13,8 +14,9 @@ export const Features: React.FC = () => {
     },
     {
       subtitle: "COMPETIÇÃO",
-      title: "XPACE\nCOMPANY",
-      description: "A elite da performance. Nossos grupos de competição representam a XPACE em festivais nacionais e internacionais (como FIH2 e Festival de Joinville). Treinamento de alto rendimento para quem busca o cenário profissional.",
+      title: "XPACE DANCE\nCOMPANY",
+      href: "/dance/company",
+      description: "O núcleo competitivo da XPACE Escola de Dança. Nossos grupos representam a escola em festivais nacionais e internacionais (como FIH2 e Festival de Joinville). Treinamento de alto rendimento para quem busca o cenário profissional.",
       icon: "trophy",
       borderColor: "border-secondary",
       iconColor: "text-secondary",
@@ -44,7 +46,7 @@ export const Features: React.FC = () => {
     <section id="features" className="py-20 bg-surface-light dark:bg-surface-dark relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="font-display text-4xl md:text-5xl font-black mb-4 uppercase">O Universo XPACE</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-black mb-4 uppercase">O Universo da Escola</h2>
           <div className="h-1 w-24 bg-gradient-to-r from-primary via-secondary to-tertiary mx-auto"></div>
         </div>
 
@@ -71,9 +73,11 @@ export const Features: React.FC = () => {
                 </p>
 
                 <div className="mt-auto pt-4 border-t border-dashed border-gray-200 dark:border-gray-800">
-                  <span className={`text-[10px] font-bold tracking-[0.2em] uppercase ${item.iconColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2`}>
+                  {item.href ? (
+                    <Link to={item.href} className="text-sm font-bold text-secondary hover:underline focus-visible:underline">Conheça a Dance Company →</Link>
+                  ) : <span className={`text-[10px] font-bold tracking-[0.2em] uppercase ${item.iconColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2`}>
                     Saiba Mais <span className="material-symbols-outlined text-xs">arrow_forward</span>
-                  </span>
+                  </span>}
                 </div>
               </div>
             </div>

@@ -42,7 +42,7 @@ export const About: React.FC = () => {
                                 A grande virada de chave ocorreu em <strong>setembro de 2024</strong>, com a chegada dos sócios <strong>Jhonney</strong> e <strong>Alceu de Miranda Junior</strong>. Essa união trouxe uma explosão de resultados, garantindo já em outubro a prestigiada vaga como <strong>Seleção Brasileira no Hip Hop Unite</strong>.
                             </p>
                             <p>
-                                Em <strong>2025</strong>, consolidamos nossa expansão, saltando de 60 para mais de 110 alunos e estruturando a escola em dois pilares fundamentais: <strong>XPACE Escola de Dança</strong> (ensino e formação) e <strong>XPACE Dance Company</strong> (alta performance).
+                                Em <strong>2025</strong>, consolidamos nossa expansão, saltando de 60 para mais de 110 alunos e fortalecendo o ensino e a formação na <strong>XPACE Escola de Dança</strong>, que conta com a <strong>XPACE Dance Company</strong> como seu núcleo competitivo de alta performance.
                             </p>
                         </div>
                     </div>

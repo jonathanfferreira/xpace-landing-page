@@ -9,12 +9,12 @@ import { Footer } from '../../components/Footer';
 import { InstagramFeed } from '../../components/InstagramFeed';
 import { SEO } from '../../components/SEO';
 
-export const Company: React.FC = () => {
+export const DanceCompany: React.FC = () => {
   return (
     <div className="relative min-h-screen">
       <SEO 
-        title="XPACE Dance Company | A Elite" 
-        description="A XPACE Dance Company é o ápice da nossa escola. Formada por bailarinos selecionados, representa a marca nos maiores festivais e competições."
+        title="XPACE Dance Company | XPACE Escola de Dança"
+        description="XPACE Dance Company é o núcleo competitivo da XPACE Escola de Dança, formado por bailarinos selecionados para representar a escola em festivais, competições e performances."
         keywords="dance company, companhia de dança, competições de dança, xpace, joinville"
       />
       <CustomCursor />
@@ -42,14 +42,14 @@ export const Company: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <span className="font-tech text-secondary tracking-widest uppercase mb-4 block">A Elite XPACE</span>
+                <span className="font-tech text-secondary tracking-widest uppercase mb-4 block">Núcleo competitivo da escola</span>
                 <h2 className="font-display text-5xl md:text-7xl font-black text-text-main-light dark:text-text-main-dark mb-8 leading-none">
                   NOSSA <br />
                   <span className="text-secondary italic">COMPANHIA</span>
                 </h2>
                 <div className="space-y-6 font-body text-lg text-text-muted-light dark:text-text-muted-dark leading-relaxed">
                   <p>
-                    A XPACE Dance Company é o ápice da nossa escola. Formada por bailarinos selecionados através de audições rigorosas, a companhia representa a marca XPACE nos maiores festivais e competições de dança do Brasil e do mundo.
+                    A XPACE Dance Company é o núcleo competitivo da XPACE Escola de Dança. Formada por bailarinos selecionados através de audições, a equipe representa a escola em festivais, competições e performances no Brasil e no mundo.
                   </p>
                   <p>
                     Nosso foco é a excelência técnica, a inovação coreográfica e a performance de alto impacto. Aqui, a dança transcende o hobby e se torna uma profissão, uma paixão levada ao extremo.
@@ -58,7 +58,7 @@ export const Company: React.FC = () => {
               </div>
               <div className="relative">
                 <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-gray-200 dark:bg-gray-800 relative z-10">
-                  <img src="/images/gallery/IMG_4858.JPG" alt="XPACE Company" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                  <img src="/images/gallery/IMG_4858.JPG" alt="Equipe XPACE Dance Company" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
                 </div>
                 <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-secondary/20 rounded-full blur-3xl z-0"></div>
               </div>
