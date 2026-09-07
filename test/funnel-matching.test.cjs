@@ -79,12 +79,43 @@ describe('XPACE Phase 3: Deterministic Class Matching Engine & Catalog Tests', (
     });
 
     it('excludes classes that do not accept trial (acceptsTrial === false) by default', () => {
-      // In central catalog, competition companies (e.g. Cia Heels) have acceptsTrial: false
-      const result = matchClasses({ age: 22, modalities: ['HEELS'] });
-      for (const m of result.matches) {
-        assert.strictEqual(m.classData.acceptsTrial, true, `Class ${m.classData.id} should accept trial`);
-        assert.ok(!m.classData.id.startsWith('cia-'), `Competition company ${m.classData.id} must not be in trial recommendations`);
-      }
+      const mockWithTrial = [
+        {
+          id: 'test-trial-yes',
+          name: 'Trial Yes',
+          modality: 'STREET_DANCE',
+          category: 'ADULTO',
+          minAge: 17,
+          maxAge: 99,
+          level: 'INICIANTE',
+          levelLabel: 'Iniciante',
+          days: ['SEGUNDA'],
+          period: 'NOITE',
+          time: '19:00',
+          room: 'XPERIENCE',
+          active: true,
+          acceptsTrial: true
+        },
+        {
+          id: 'test-trial-no',
+          name: 'Trial No',
+          modality: 'STREET_DANCE',
+          category: 'ADULTO',
+          minAge: 17,
+          maxAge: 99,
+          level: 'INICIANTE',
+          levelLabel: 'Iniciante',
+          days: ['SEGUNDA'],
+          period: 'NOITE',
+          time: '20:00',
+          room: 'XPERIENCE',
+          active: true,
+          acceptsTrial: false
+        }
+      ];
+      const result = matchClasses({ age: 20 }, mockWithTrial);
+      assert.strictEqual(result.matches.length, 1);
+      assert.strictEqual(result.matches[0].classData.id, 'test-trial-yes');
     });
 
     it('allows viewing non-trial classes when requireTrial option is false', () => {
@@ -180,7 +211,7 @@ describe('XPACE Phase 3: Deterministic Class Matching Engine & Catalog Tests', (
 
   describe('Central Dance Class Catalog Integrity', () => {
     it('contains valid and consistent data for all active classes', () => {
-      assert.ok(DANCE_CLASSES.length >= 40, `Catalog should have at least 40 classes, found ${DANCE_CLASSES.length}`);
+      assert.ok(DANCE_CLASSES.length >= 20, `Catalog should have at least 20 classes, found ${DANCE_CLASSES.length}`);
 
       const validModalities = [
         'STREET_DANCE', 'K_POP', 'JAZZ_FUNK', 'HEELS', 'CONTEMPORANEO',

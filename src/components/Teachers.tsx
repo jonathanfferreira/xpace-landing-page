@@ -90,14 +90,6 @@ const teachersData: TeamMember[] = [
     instagram: "https://www.instagram.com/icaroalvesdancer/"
   },
   {
-    id: 6,
-    name: "Isis",
-    role: "Hip Hop",
-    roleColor: "secondary",
-    description: "Hip Hop",
-    instagram: "https://www.instagram.com/isislkr/"
-  },
-  {
     id: 107,
     name: "Jhonney",
     role: "Dancehall & Hip Hop",
@@ -128,14 +120,6 @@ const teachersData: TeamMember[] = [
     roleColor: "tertiary",
     description: "Hip Hop",
     instagram: "https://www.instagram.com/marcelinho_hiphop/"
-  },
-  {
-    id: 115,
-    name: "Ruan Amorim",
-    role: "Fundador e Coreógrafo",
-    roleColor: "secondary",
-    description: "Fundador e Coreógrafo",
-    instagram: "https://www.instagram.com/ruan_amrm/"
   },
   {
     id: 13,

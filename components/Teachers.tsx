@@ -88,15 +88,6 @@ const teachersData: TeamMember[] = [
     image: "/images/teachers/eduarda.webp"
   },
   {
-    id: 5,
-    name: "Engels",
-    role: "Vogue & Waacking",
-    roleColor: "primary",
-    description: "Vogue & Waacking",
-    image: "/images/teachers/engels.webp",
-    instagram: "https://www.instagram.com/engelsmatheus_/"
-  },
-  {
     id: 11,
     name: "Icaro Alves",
     role: "Dança de Salão",
@@ -104,15 +95,6 @@ const teachersData: TeamMember[] = [
     description: "Dança de Salão",
     image: "/images/teachers/icaro.jpg",
     instagram: "https://www.instagram.com/icaroalvesdancer/"
-  },
-  {
-    id: 6,
-    name: "Isis",
-    role: "Hip Hop",
-    roleColor: "secondary",
-    description: "Hip Hop",
-    image: "/images/teachers/isis.webp",
-    instagram: "https://www.instagram.com/isislkr/"
   },
   {
     id: 107,
@@ -150,15 +132,6 @@ const teachersData: TeamMember[] = [
     description: "Hip Hop",
     image: "/images/teachers/marcelinho.jpg",
     instagram: "https://www.instagram.com/marcelinho_hiphop/"
-  },
-  {
-    id: 115,
-    name: "Ruan Amorim",
-    role: "Fundador e Coreógrafo",
-    roleColor: "secondary",
-    description: "Fundador e Coreógrafo",
-    image: "/images/teachers/ruan.jpg",
-    instagram: "https://www.instagram.com/ruan_amrm/"
   },
   {
     id: 13,
