@@ -22,6 +22,13 @@ export interface LeadPayload {
   utmTerm: string;
   quizResult: string;
   quizAnswers: Record<string, number>;
+  age?: number;
+  preferredModalities?: string[];
+  experience?: string;
+  availability?: string[];
+  objective?: string;
+  recommendedClassIds?: string[];
+  selectedClassId?: string;
 }
 export interface Lead extends LeadPayload {
   id: string;
