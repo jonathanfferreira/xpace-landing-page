@@ -2,102 +2,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
-type ScheduleItem = {
-  time: string;
-  activity: string;
-  room: string;
-  age?: string;
-};
+import { getWeeklySchedule } from '../src/data/classes';
+import { DayOfWeek, WeeklySchedule } from '../src/types/classes';
 
-type WeeklySchedule = {
-  [key: string]: ScheduleItem[];
-};
-
-const scheduleData: WeeklySchedule = {
-  "SEGUNDA": [
-    { time: "08:00", activity: "Street Dance Kids", room: "XPERIENCE", age: "ACIMA 5 +" },
-    { time: "09:00", activity: "Teatro", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "09:00", activity: "Ritmos", room: "XTAGE", age: "ACIMA 15 +" },
-    { time: "14:00", activity: "Danças Populares", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "14:30", activity: "Street Dance Kids", room: "XLAB", age: "ACIMA 5 +" },
-    { time: "15:30", activity: "Teatro", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Street Dance Junior", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "19:00", activity: "Contemporâneo", room: "XLAB", age: "ACIMA 12 +" },
-    { time: "19:00", activity: "Street Dance Kids", room: "XCORE", age: "ACIMA 5 +" },
-    { time: "19:00", activity: "Ritmos", room: "XTAGE", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Jiu Jitsu", room: "XTAGE", age: "ACIMA 6 +" },
-    { time: "20:00", activity: "Street Dance Senior", room: "XPERIENCE", age: "ACIMA 16 +" },
-    { time: "20:00", activity: "Jazz Iniciante", room: "XCORE", age: "ACIMA 18 +" },
-    { time: "20:00", activity: "Acrobacia", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Jiu Jitsu", room: "XTAGE" },
-    { time: "20:00", activity: "Muay Thai", room: "XLAB" },
-    { time: "21:00", activity: "Jazz", room: "XPERIENCE", age: "ACIMA 18 +" },
-  ],
-  "TERÇA": [
-    { time: "09:00", activity: "Street Dance Teens Iniciante", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "14:30", activity: "Street Dance Iniciante", room: "XLAB", age: "ACIMA 12 +" },
-    { time: "15:30", activity: "Baby Class", room: "XLAB", age: "ACIMA 3 +" },
-    { time: "19:00", activity: "Jazz Funk (Prof. Gus)", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Ritmos", room: "XCORE", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Muay Thai", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Dança de Salão", room: "XLAB", age: "ACIMA 18 +" },
-    { time: "21:00", activity: "Ballet Iniciante", room: "XCORE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "K-Pop", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Muay Thai", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Street Dance Iniciante", room: "XLAB", age: "ACIMA 12 +" },
-  ],
-  "QUARTA": [
-    { time: "08:30", activity: "Street Dance Kids", room: "XLAB", age: "ACIMA 5 +" },
-    { time: "09:00", activity: "Ritmos", room: "XTAGE", age: "ACIMA 15 +" },
-    { time: "09:30", activity: "Teatro", room: "XCORE", age: "ACIMA 12 +" },
-    { time: "14:00", activity: "Danças Populares", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "14:30", activity: "Street Dance Kids", room: "XLAB", age: "ACIMA 5 +" },
-    { time: "15:30", activity: "Teatro", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Street Dance Junior", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "19:00", activity: "Contemporâneo", room: "XLAB", age: "ACIMA 12 +" },
-    { time: "19:00", activity: "Street Dance Kids", room: "XCORE", age: "ACIMA 5 +" },
-    { time: "19:00", activity: "Ritmos", room: "XTAGE", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Jiu Jitsu", room: "XTAGE" },
-    { time: "20:00", activity: "Street Dance Senior", room: "XPERIENCE", age: "ACIMA 16 +" },
-    { time: "20:00", activity: "Jazz Iniciante", room: "XCORE", age: "ACIMA 18 +" },
-    { time: "20:00", activity: "Acrobacia", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Jiu Jitsu", room: "XTAGE" },
-    { time: "20:00", activity: "Muay Thai", room: "XLAB" },
-    { time: "21:00", activity: "Jazz", room: "XPERIENCE", age: "ACIMA 18 +" },
-  ],
-  "QUINTA": [
-    { time: "09:00", activity: "Street Dance Teens Iniciante", room: "XPERIENCE", age: "ACIMA 12 +" },
-    { time: "14:30", activity: "Street Dance Iniciante", room: "XLAB", age: "ACIMA 12 +" },
-    { time: "15:30", activity: "Baby Class", room: "XLAB", age: "ACIMA 3 +" },
-    { time: "19:00", activity: "Heels", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Ritmos", room: "XCORE", age: "ACIMA 15 +" },
-    { time: "19:00", activity: "Muay Thai", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Dança de Salão", room: "XLAB", age: "ACIMA 18 +" },
-    { time: "21:00", activity: "Ballet Iniciante", room: "XCORE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "K-Pop", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Muay Thai", room: "XTAGE", age: "ACIMA 12 +" },
-    { time: "20:00", activity: "Street Dance Iniciante", room: "XLAB", age: "ACIMA 12 +" },
-  ],
-  "SEXTA": [
-    { time: "19:00", activity: "Danças Urbanas Adulto Iniciante", room: "XPERIENCE", age: "ACIMA 18 +" },
-    { time: "19:00", activity: "Jiu Jitsu Kids", room: "XLAB", age: "ACIMA 6 +" },
-    { time: "19:00", activity: "Jiu Jitsu", room: "XTAGE" },
-    { time: "19:00", activity: "Street Funk", room: "XPERIENCE", age: "ACIMA 15 +" },
-    { time: "20:00", activity: "Jiu Jitsu", room: "XTAGE" },
-  ],
-  "SÁBADO": [
-    { time: "09:00", activity: "Jazz Funk", room: "XPERIENCE", age: "ACIMA 15 +" },
-    { time: "10:00", activity: "Danças Urbanas (Geral)", room: "XPERIENCE", age: "ACIMA 18 +" },
-    { time: "11:00", activity: "Heels", room: "XPERIENCE", age: "ACIMA 15 +" },
-    { time: "12:00", activity: "Heels", room: "XPERIENCE", age: "ACIMA 15 +" },
-    { time: "14:00", activity: "Cia Heels", room: "XPERIENCE" },
-    { time: "14:30", activity: "Salão / Dancehall", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "14:30", activity: "Cia Danças Populares", room: "XTAGE" },
-    { time: "15:00", activity: "Cia Heels", room: "XPERIENCE" },
-    { time: "15:30", activity: "Salão / Dancehall", room: "XLAB", age: "ACIMA 15 +" },
-    { time: "15:30", activity: "Cia Danças Populares", room: "XTAGE" },
-  ]
-};
+const scheduleData: WeeklySchedule = getWeeklySchedule();
 
 const getRoomColor = (room: string) => {
   switch (room) {
@@ -135,9 +43,9 @@ const openWhatsApp = (activity: string, time: string, day: string) => {
 };
 
 export const Schedule: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("SEGUNDA");
+  const [activeTab, setActiveTab] = useState<DayOfWeek>("SEGUNDA");
   const [activeFilter, setActiveFilter] = useState("TODOS");
-  const days = ["SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SÁBADO"];
+  const days: DayOfWeek[] = ["SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SÁBADO"];
   const filters = ["TODOS", "KIDS", "TEENS", "ADULTO"];
 
   const filteredData = scheduleData[activeTab].filter(item => {
