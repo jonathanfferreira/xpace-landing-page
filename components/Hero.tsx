@@ -44,7 +44,7 @@ export const Hero: React.FC<{ onOpenQuiz: () => void }> = ({ onOpenQuiz }) => {
 
               <button className="relative block px-12 py-6 bg-black dark:bg-white text-white dark:text-black text-2xl font-tech tracking-widest rounded-full transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden">
                 <span className="relative z-10 font-bold flex items-center justify-center gap-3">
-                  DESCUBRA SEU ESTILO
+                  ENCONTRE SUA TURMA
                   <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">school</span>
                 </span>
               </button>
