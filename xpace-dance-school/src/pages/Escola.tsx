@@ -21,6 +21,7 @@ import { XpacePro } from '../../components/XpacePro';
 import { QuizModal } from '../components/Quiz/QuizModal'; // Quiz Component
 import { InstagramFeed } from '../../components/InstagramFeed';
 import { SEO } from '../../components/SEO';
+import { TrustTicker } from '../../components/TrustTicker';
 
 import { CustomCursor } from '../../components/CustomCursor';
 
@@ -75,6 +76,7 @@ export const Escola: React.FC = () => {
 
       <main>
         <Hero onOpenQuiz={handleOpenQuiz} />
+        <TrustTicker />
         <Marquee />
         <Manifesto />
         <About />
@@ -84,7 +86,6 @@ export const Escola: React.FC = () => {
         <Schedule />
         <Rental />
         <Pricing />
-        <XpacePro />
         <Testimonials />
         <CTA />
         <FAQ />

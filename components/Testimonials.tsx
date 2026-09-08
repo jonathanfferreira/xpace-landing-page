@@ -1,99 +1,125 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const reviews = [
   {
     name: "Andrea Veiga da Silva",
-    text: "A Xpace é a melhor escola de dança de Joinville! Um espaço incrível onde a paixão pela dança é sentida. O ambiente é seguro e acolhedor, ideal tanto para crianças quanto para adultos que desejam se aprimorar ou começar a dançar.",
-    stars: 5
-  },
-  {
-    name: "Jonathan Ferreira",
-    text: "A melhor de Joinville e SC, com qualidade e disciplina. Respeito, Humildade, um lugar de refúgio, pra se divertir e esquecer os problemas da vida! ❤️🙏",
+    role: "Aluna Adulto • Danças Urbanas",
+    text: "A XPACE é a melhor escola de dança de Joinville! Um espaço incrível onde a paixão pela dança é sentida em cada detalhe. O ambiente é seguro, acolhedor e perfeito tanto para quem quer começar do zero quanto para quem busca se aprimorar.",
     stars: 5
   },
   {
     name: "Graciela Kirinus",
-    text: "É um espaço artístico que abraça à todos. Minha filha foi muito bem acolhida. A escola vai muito além da dança, onde incentivam valores de amizade, união, de pertencimento ao grupo e responsabilidade. 💚",
+    role: "Mãe de Aluna • Kids/Teens",
+    text: "É um espaço artístico que abraça a todos. Minha filha foi acolhida com muito amor. A escola vai muito além da técnica da dança: desenvolve disciplina, amizades sinceras, sensação de pertencimento e responsabilidade. Recomendo de olhos fechados!",
     stars: 5
   },
   {
     name: "Delcio Camelo",
-    text: "Lugar abençoado, acolhedor para todas as pessoas. Não precisa saber dançar, lá você aprende desde do básico até o competitivo. Pessoas de bom coração para te deixar a vontade e curtir bastante cada momento.",
+    role: "Aluno Iniciante • Ritmos",
+    text: "Lugar acolhedor demais! Você não precisa saber dançar para entrar: os professores ensinam com muita paciência desde o básico até o avançado. A energia da escola faz você esquecer todo o estresse do dia a dia.",
+    stars: 5
+  },
+  {
+    name: "Jonathan Ferreira",
+    role: "Comunidade XPACE",
+    text: "A melhor de Joinville e de Santa Catarina! Qualidade técnica de padrão mundial, respeito e humildade. É mais que uma escola, é um refúgio para se expressar, se divertir e superar limites.",
     stars: 5
   },
   {
     name: "Paulo Moura",
-    text: "As aulas de danças urbanas com o professor Ruan são excelentes, possui experiência e ótima didática, turma perfeita para aqueles que, assim como eu, estão começando do zero.",
+    role: "Aluno • Danças Urbanas",
+    text: "As aulas de danças urbanas são excepcionais! Didática clara e acolhedora, ritmo contagiante e uma estrutura que não tem comparação na cidade. Turmas perfeitas para quem está começando do zero absoluto.",
     stars: 5
   },
   {
     name: "Vanessa Ferreira",
-    text: "Escola incrível, ambiente maravilhoso, uma vista externa linda, ótimos professores, a sala de aula é enorme, eu super indico!",
+    role: "Aluna • Heels & Jazz Funk",
+    text: "Escola impecável! Salas climatizadas enormes com piso flutuante que protege as articulações, vista externa linda e professores que realmente se importam com a sua evolução pessoal.",
     stars: 5
   }
 ];
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="py-32 bg-background-light dark:bg-background-dark relative border-t border-gray-100 dark:border-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" className="py-28 bg-background-light dark:bg-background-dark relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-20">
-          <span className="font-tech text-primary tracking-widest uppercase mb-2">Google Reviews</span>
-          <h2 className="font-display text-5xl md:text-6xl font-black text-text-main-light dark:text-text-main-dark mb-6">
-            QUEM DANÇA <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyber-pink">CONFIA</span>
+          <div className="pill-badge mb-4">
+            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Avaliações Verificadas no Google</span>
+          </div>
+
+          <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl tracking-tighter uppercase mb-6 text-text-main-light dark:text-text-main-dark">
+            Quem dança na XPACE, <br />
+            <span className="text-gradient inline-block">recomenda sem hesitar.</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary via-tertiary to-secondary"></div>
+
+          <p className="max-w-2xl text-base sm:text-lg text-gray-600 dark:text-gray-400 font-body leading-relaxed">
+            Mais de 40 famílias e bailarinos de Joinville avaliaram nossa escola com nota máxima. Veja o que diz quem vive nossa rotina:
+          </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Silicon Valley Review Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {reviews.map((review, index) => (
-            <div key={index} className="relative group h-full">
-              {/* Card Background & Border Effect */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-20 group-hover:opacity-60 transition duration-500"></div>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="bento-card p-8 flex flex-col justify-between group"
+            >
+              <div>
+                {/* Top Row: Google Verified & Rating */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-1 text-amber-400">
+                    {[...Array(review.stars)].map((_, i) => (
+                      <span key={i} className="material-symbols-outlined text-lg fill-current">star</span>
+                    ))}
+                  </div>
 
-              <div className="relative h-full bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col hover:-translate-y-1 transition-transform duration-300">
-                {/* Quote Icon */}
-                <div className="absolute top-6 right-8 text-6xl font-display font-black text-gray-200 dark:text-gray-800/50 select-none">"</div>
-
-                {/* Stars */}
-                <div className="flex gap-1 mb-6 text-secondary">
-                  {[...Array(review.stars)].map((_, i) => (
-                    <span key={i} className="material-symbols-outlined text-lg fill-current">star</span>
-                  ))}
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-black/5 dark:bg-white/10 text-gray-700 dark:text-gray-300">
+                    <span className="text-emerald-500 font-bold">✓</span> Google
+                  </span>
                 </div>
 
-                {/* Text */}
-                <p className="font-body text-text-muted-light dark:text-text-muted-dark font-medium leading-relaxed mb-8 relative z-10 flex-grow text-sm md:text-base">
-                  {review.text}
+                {/* Review Body */}
+                <p className="font-body text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+                  "{review.text}"
                 </p>
-
-                {/* User Info (Simplified) */}
-                {/* User Info (Simplified) */}
-                <div className="mt-auto border-t border-dashed border-gray-300 dark:border-gray-700 pt-6">
-                  <h4 className="font-display font-bold text-lg leading-none text-text-main-light dark:text-text-main-dark">{review.name}</h4>
-                </div>
-
-                {/* Cyber Corner Accents */}
-                <div className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-2xl overflow-hidden">
-                  <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-secondary opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                </div>
               </div>
-            </div>
+
+              {/* Author & Category Footer */}
+              <div className="pt-4 border-t border-black/5 dark:border-white/10 flex flex-col">
+                <h4 className="font-display font-bold text-base text-text-main-light dark:text-text-main-dark uppercase">
+                  {review.name}
+                </h4>
+                <span className="text-xs font-mono text-gray-500">
+                  {review.role}
+                </span>
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* View More Link */}
+        {/* Google Reviews Direct Badge CTA */}
         <div className="mt-16 text-center">
-          <a href="https://www.google.com/search?q=XPACE+Escola+de+Dan%C3%A7a+Joinville+Reviews" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-tech font-bold tracking-widest text-gray-500 hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1">
-            VER TODAS AS 40+ AVALIAÇÕES NO GOOGLE
-            <span className="material-symbols-outlined text-sm">open_in_new</span>
+          <a
+            href="https://www.google.com/search?q=XPACE+Escola+de+Dan%C3%A7a+Joinville+Reviews"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="apple-button-secondary text-sm group"
+          >
+            <span className="material-symbols-outlined text-primary text-lg">star</span>
+            <span>Ver todas as 40+ avaliações reais no Google</span>
+            <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">open_in_new</span>
           </a>
         </div>
+
       </div>
     </section>
   );

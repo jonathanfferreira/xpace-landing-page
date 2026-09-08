@@ -1,69 +1,131 @@
 import React from 'react';
-import { MagneticButton } from './MagneticButton';
+import { motion } from 'framer-motion';
 
 export const Hero: React.FC<{ onOpenQuiz: () => void }> = ({ onOpenQuiz }) => {
+  const scheduleUrl = "https://agendamento.nextfit.com.br/f9b1ea53-0e0e-4f98-9396-3dab7c9fbff4";
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
-      {/* Animated Blobs */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary rounded-full blur-[120px] opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-0 left-10 w-[400px] h-[400px] bg-secondary rounded-full blur-[100px] opacity-10"></div>
+    <section className="relative min-h-[92vh] flex flex-col items-center justify-center overflow-hidden pt-32 pb-16">
+      {/* Silicon Valley Precision Spotlight */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[550px] bg-[radial-gradient(ellipse_at_top,rgba(99,36,178,0.22)_0%,rgba(235,0,188,0.08)_40%,transparent_70%)] pointer-events-none -z-10"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 flex flex-col items-center">
+        
+        {/* Prestige Location Pill Badge */}
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/5 dark:bg-white/[0.06] border border-black/10 dark:border-white/10 mb-8 backdrop-blur-md shadow-sm"
+        >
+          <span className="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+          <span className="text-xs font-mono tracking-widest uppercase font-bold text-gray-800 dark:text-gray-200">
+            Joinville / SC • Capital Nacional da Dança
+          </span>
+        </motion.div>
 
-        {/* Main Title */}
-        <div className="relative inline-block">
-          {/* Sticker Juvenil (Placeholder) */}
-          <img
-            src="/images/sticker-xpace.png"
-            alt="Xpace Sticker"
-            className="absolute -top-16 -right-16 md:-top-20 md:-right-24 w-24 md:w-32 z-20 drop-shadow-xl hover:scale-110 transition-transform cursor-pointer animate-bounce"
-            style={{ animationDuration: '3s' }}
-          />
-          <h1 className="font-display font-bold text-7xl md:text-9xl tracking-tight mb-8 leading-[0.85] text-black dark:text-white transition-colors duration-300">
-            MOVA-SE <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-gray-600 to-gray-400 dark:from-white dark:via-gray-200 dark:to-gray-400 glitch-text" data-text="ALÉM DOS LIMITES">
-              ALÉM DOS LIMITES
+        {/* Cinematic Display Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="relative"
+        >
+          <h1 className="font-display font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter leading-[0.9] mb-8 uppercase text-text-main-light dark:text-text-main-dark">
+            ONDE O RITMO <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent inline-block">
+              VIRA POTÊNCIA.
             </span>
           </h1>
-        </div>
+        </motion.div>
 
-        {/* Subtext */}
-        <div className="max-w-xl mx-auto backdrop-blur-sm bg-white/5 dark:bg-black/20 p-4 rounded-xl border border-black/10 dark:border-white/10">
-          <p className="text-lg md:text-xl text-text-main-light dark:text-text-main-dark font-body font-medium tracking-wide leading-relaxed">
-            Educação em Dança Impulsionada por Tecnologia Premium.
-          </p>
-        </div>
+        {/* High-Impact Commercial Subtext */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 font-body font-normal leading-relaxed mb-10"
+        >
+          A maior escola de Danças Urbanas e Dança Contemporânea do Norte de SC. Metodologia transformadora do zero absoluto aos palcos nacionais, em 4 salas acústicas no coração de Joinville.
+        </motion.p>
 
-        {/* Buttons */}
-        <div className="mt-12 flex flex-col md:flex-row justify-center gap-6 items-center">
+        {/* Silicon Valley Dual Action CTAs */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-lg"
+        >
+          {/* Primary Lead Trigger: Class Matcher */}
+          <button
+            onClick={onOpenQuiz}
+            className="apple-button-primary w-full sm:w-auto text-base sm:text-lg group cursor-pointer"
+          >
+            <span>ENCONTRE SUA TURMA EM 30s</span>
+            <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">
+              bolt
+            </span>
+          </button>
 
-          {/* Main CTA - Quiz Trigger */}
-          <MagneticButton>
-            <div className="relative group cursor-pointer" onClick={onOpenQuiz}>
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-tertiary rounded-full blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
+          {/* Direct Trial Booking */}
+          <a
+            href={scheduleUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="apple-button-secondary w-full sm:w-auto text-base sm:text-lg group"
+          >
+            <span className="material-symbols-outlined text-primary text-xl">calendar_today</span>
+            <span>Aula Gratuita</span>
+            <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
+              arrow_forward
+            </span>
+          </a>
+        </motion.div>
 
-              <button className="relative block px-12 py-6 bg-black dark:bg-white text-white dark:text-black text-2xl font-tech tracking-widest rounded-full transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden">
-                <span className="relative z-10 font-bold flex items-center justify-center gap-3">
-                  ENCONTRE SUA TURMA
-                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">school</span>
-                </span>
-              </button>
-            </div>
-          </MagneticButton>
+        {/* Conversion Trust Bullets */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-10 flex flex-wrap justify-center items-center gap-y-2 gap-x-6 text-xs text-gray-500 dark:text-gray-400 font-mono"
+        >
+          <span className="flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-sm text-emerald-500">check_circle</span>
+            Turmas Kids (4+), Teens e Adultos
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-sm text-emerald-500">check_circle</span>
+            Piso especial que protege articulações
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-sm text-emerald-500">check_circle</span>
+            1ª Aula Experimental 100% Gratuita
+          </span>
+        </motion.div>
 
-          <MagneticButton>
-            <a href="#plans" className="px-8 py-4 border border-black dark:border-white text-black dark:text-white text-xl font-tech tracking-widest rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center justify-center gap-2 group hover:-translate-y-1">
-              <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              Matricule-se
-            </a>
-          </MagneticButton>
-        </div>
-      </div>
+        {/* Modern Minimalist Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.7 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="mt-14 flex flex-col items-center gap-2 cursor-pointer group"
+          onClick={() => {
+            const next = document.getElementById('manifesto') || document.getElementById('about');
+            next?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          <div className="w-5 h-9 rounded-full border-2 border-gray-400 dark:border-gray-600 group-hover:border-primary flex items-start justify-center p-1 transition-colors">
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+              className="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-gray-300 group-hover:bg-primary transition-colors"
+            />
+          </div>
+          <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase group-hover:text-primary transition-colors">
+            EXPLORAR
+          </span>
+        </motion.div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
-        <span className="text-sm font-tech tracking-widest animate-bounce">ROLEAR</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-black dark:via-white to-transparent"></div>
       </div>
     </section>
   );

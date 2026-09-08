@@ -20,6 +20,7 @@ import { FloatingWhatsApp } from '../../components/FloatingWhatsApp';
 import { EnrollmentModal } from '../components/EnrollmentFunnel';
 import { InstagramFeed } from '../../components/InstagramFeed';
 import { SEO } from '../../components/SEO';
+import { TrustTicker } from '../../components/TrustTicker';
 
 import { CustomCursor } from '../../components/CustomCursor';
 
@@ -74,6 +75,7 @@ export const Escola: React.FC = () => {
 
       <main>
         <Hero onOpenQuiz={handleOpenQuiz} />
+        <TrustTicker />
         <Marquee />
         <Manifesto />
         <About />
