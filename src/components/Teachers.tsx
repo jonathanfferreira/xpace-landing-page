@@ -372,7 +372,7 @@ export const Teachers: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
           <div>
-            <h2 className="font-display text-4xl md:text-8xl font-black tracking-tighter mb-2 uppercase">Equipe</h2>
+            <h2 className="font-display text-4xl md:text-8xl font-black tracking-tighter mb-2 uppercase text-text-main-light dark:text-text-main-dark">Equipe</h2>
             <div className="h-2 w-20 bg-gradient-to-r from-primary to-cyber-pink"></div>
           </div>
           <div className="text-left md:text-right max-w-md">
@@ -390,7 +390,7 @@ export const Teachers: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <h3 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-8 uppercase text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-500 dark:from-white dark:to-gray-400 transition-all duration-300">Direção</h3>
+          <h3 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-8 uppercase text-text-main-light dark:text-text-main-dark transition-all duration-300">Direção</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {directorsData.map((director) => (
               <TeamCard key={director.id} member={director} />
@@ -412,7 +412,7 @@ export const Teachers: React.FC = () => {
                 <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
                 <span className="text-xs font-tech tracking-widest text-primary uppercase font-bold">Grade Semanal Regular</span>
               </div>
-              <h3 className="font-display text-3xl md:text-5xl font-black tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-500 dark:from-white dark:to-gray-400">
+              <h3 className="font-display text-3xl md:text-5xl font-black tracking-tighter uppercase text-text-main-light dark:text-text-main-dark">
                 Professores <span className="text-primary">Turmas Fixas</span>
               </h3>
             </div>
@@ -441,7 +441,7 @@ export const Teachers: React.FC = () => {
                 <span className="w-2.5 h-2.5 rounded-full bg-secondary"></span>
                 <span className="text-xs font-tech tracking-widest text-secondary uppercase font-bold">Módulos & Imersões Rotativas</span>
               </div>
-              <h3 className="font-display text-3xl md:text-4xl font-black tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-500 dark:from-white dark:to-gray-400">
+              <h3 className="font-display text-3xl md:text-4xl font-black tracking-tighter uppercase text-text-main-light dark:text-text-main-dark">
                 Corpo Docente <span className="text-secondary">Danças Urbanas</span>
               </h3>
             </div>

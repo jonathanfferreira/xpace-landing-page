@@ -11,8 +11,8 @@ export const Location: React.FC = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="font-display font-black text-6xl md:text-8xl tracking-tighter leading-none mb-4 uppercase">
-                            NOSSA <span className="text-gradient">LOCALIZAÇÃO</span>
+                        <h2 className="font-display font-black text-6xl md:text-8xl tracking-tighter leading-none mb-4 uppercase text-text-main-light dark:text-text-main-dark">
+                            NOSSA <span className="text-gradient inline-block">LOCALIZAÇÃO</span>
                         </h2>
                         <p className="text-gray-500 dark:text-text-muted-dark font-bold tracking-widest text-sm uppercase">
                             VISITE NOSSO ESPAÇO NO CORAÇÃO DE JOINVILLE

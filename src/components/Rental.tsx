@@ -43,8 +43,8 @@ export const Rental: React.FC = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <h4 className="font-tech text-primary tracking-widest text-sm mb-4">LOCAÇÃO DE ESTÚDIOS</h4>
-                        <h2 className="font-display font-black text-6xl md:text-8xl tracking-tighter leading-[0.9] mb-8 uppercase">
-                            SALAS PARA <span className="text-gradient">ENSAIOS</span>
+                        <h2 className="font-display font-black text-6xl md:text-8xl tracking-tighter leading-[0.9] mb-8 uppercase text-text-main-light dark:text-text-main-dark">
+                            SALAS PARA <span className="text-gradient inline-block">ENSAIOS</span>
                         </h2>
 
                         <div className="space-y-6 mb-10">

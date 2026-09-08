@@ -30,8 +30,8 @@ export const About: React.FC = () => {
                             <span className="font-tech text-primary tracking-widest font-bold uppercase">Nossa Trajetória</span>
                         </div>
 
-                        <h2 className="font-display text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase">
-                            XPACE: ONDE A TÉCNICA ENCONTRA A PAIXÃO E O <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyber-pink">TALENTO VIRA HISTÓRIA.</span>
+                        <h2 className="font-display text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase text-text-main-light dark:text-text-main-dark">
+                            XPACE: ONDE A TÉCNICA ENCONTRA A PAIXÃO E O <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyber-pink inline-block">TALENTO VIRA HISTÓRIA.</span>
                         </h2>
 
                         <div className="space-y-6 text-gray-600 dark:text-gray-300 font-body text-sm md:text-base leading-relaxed text-justify">
@@ -59,7 +59,7 @@ export const About: React.FC = () => {
                         {/* Alceu */}
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors duration-300 group">
                             <div className="mb-6">
-                                <h4 className="font-display text-2xl font-black uppercase mb-1">Alceu de Miranda Junior</h4>
+                                <h4 className="font-display text-2xl font-black uppercase mb-1 text-text-main-light dark:text-text-main-dark">Alceu de Miranda Junior</h4>
                                 <p className="font-tech text-xs text-primary font-bold tracking-widest uppercase">Diretor Financeiro</p>
                             </div>
                             <p className="font-body text-sm text-gray-500 leading-relaxed">
@@ -70,7 +70,7 @@ export const About: React.FC = () => {
                         {/* Tayonara */}
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-cyber-pink transition-colors duration-300 group">
                             <div className="mb-6">
-                                <h4 className="font-display text-2xl font-black uppercase mb-1">Tayonara Cristina</h4>
+                                <h4 className="font-display text-2xl font-black uppercase mb-1 text-text-main-light dark:text-text-main-dark">Tayonara Cristina</h4>
                                 <p className="font-tech text-xs text-cyber-pink font-bold tracking-widest uppercase">Diretora Administrativa</p>
                             </div>
                             <p className="font-body text-sm text-gray-500 leading-relaxed">
@@ -81,7 +81,7 @@ export const About: React.FC = () => {
                         {/* Jhonney */}
                         <div className="bg-white dark:bg-black p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-secondary transition-colors duration-300 group">
                             <div className="mb-6">
-                                <h4 className="font-display text-2xl font-black uppercase mb-1">Jhonney</h4>
+                                <h4 className="font-display text-2xl font-black uppercase mb-1 text-text-main-light dark:text-text-main-dark">Jhonney</h4>
                                 <p className="font-tech text-xs text-secondary font-bold tracking-widest uppercase">Diretor Artístico</p>
                             </div>
                             <p className="font-body text-sm text-gray-500 leading-relaxed">

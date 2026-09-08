@@ -11,7 +11,7 @@ export const Pricing: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary via-tertiary to-secondary opacity-5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 className="font-display text-6xl md:text-8xl font-black text-center mb-6 tracking-tighter">PLANOS</h2>
+        <h2 className="font-display text-6xl md:text-8xl font-black text-center mb-6 tracking-tighter text-text-main-light dark:text-text-main-dark">PLANOS</h2>
         <p className="text-center font-tech text-gray-500 mb-24 tracking-widest text-sm md:text-base">VÁLIDO PARA TODAS AS MODALIDADES • 2026</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch mb-20">
@@ -32,7 +32,7 @@ export const Pricing: React.FC = () => {
                 <div className="inline-block bg-[#FFD700] text-black font-tech font-bold px-4 py-1 rounded-full text-sm mb-4 tracking-widest uppercase">
                   Acesso Ilimitado
                 </div>
-                <h3 className="font-display text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#white] mb-2 uppercase italic">PASSE LIVRE</h3>
+                <h3 className="font-display text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-white mb-2 uppercase italic inline-block">PASSE LIVRE</h3>
                 <p className="text-gray-300 font-body text-lg max-w-xl">
                   A experiência XPACE definitiva. <strong className="text-[#FFD700]">Faça quantas aulas quiser</strong>, em qualquer modalidade. Liberdade total para sua evolução.
                 </p>

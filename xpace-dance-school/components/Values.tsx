@@ -40,8 +40,8 @@ export const Values: React.FC = () => {
             {/* Content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
               <h3
-                className="font-display text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tighter uppercase transition-all duration-500 text-transparent group-hover:text-text-main-light dark:group-hover:text-text-main-dark group-hover:scale-105 select-none break-words w-full"
-                style={{ WebkitTextStroke: '1px currentColor' }}
+                className="font-display text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tighter uppercase transition-all duration-500 text-transparent group-hover:text-white group-hover:scale-105 select-none break-words w-full"
+                style={{ WebkitTextStroke: '1.5px rgba(255, 255, 255, 0.45)' }}
               >
                 {item.title}
               </h3>
