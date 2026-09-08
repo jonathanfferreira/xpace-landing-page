@@ -29,8 +29,7 @@ const directorsData: TeamMember[] = [
     name: "Tayonara Cristina",
     role: "Diretora Administrativa",
     roleColor: "cyber-pink",
-    description: "Sócia e Diretora Administrativa",
-    image: "/images/teachers/tayonara.jpg"
+    description: "Sócia e Diretora Administrativa"
   },
   {
     id: 7,
@@ -83,7 +82,6 @@ const fixedTeachersData: TeamMember[] = [
     schedule: "Terça & Quinta (19h)",
     roleColor: "primary",
     description: "Ritmos",
-    image: "/images/teachers/natalia.jpg",
     isFixed: true
   },
   {
@@ -93,7 +91,6 @@ const fixedTeachersData: TeamMember[] = [
     schedule: "Terça, Quinta & Sexta",
     roleColor: "cyber-pink",
     description: "K-Pop",
-    image: "/images/teachers/lizbeth.jpg",
     instagram: "https://www.instagram.com/lisbeth._.gabriela/",
     isFixed: true
   },
@@ -104,7 +101,6 @@ const fixedTeachersData: TeamMember[] = [
     schedule: "Segunda & Quarta (20h)",
     roleColor: "primary",
     description: "Acrobacias de Solo",
-    image: "/images/teachers/leonardo.jpg",
     isFixed: true
   },
   {
@@ -210,78 +206,160 @@ const guestTeachersData: TeamMember[] = [
   }
 ];
 
+const roleColorThemes: Record<TeamMember['roleColor'], {
+  badgeText: string;
+  blobColor: string;
+  gradientVia: string;
+  avatarBorder: string;
+  avatarBg: string;
+  avatarGlow: string;
+  avatarDot: string;
+}> = {
+  primary: {
+    badgeText: 'text-primary',
+    blobColor: 'bg-primary/20 group-hover:bg-primary/40',
+    gradientVia: 'via-primary',
+    avatarBorder: 'border-primary/50 group-hover:border-primary',
+    avatarBg: 'from-primary/30 to-white/5',
+    avatarGlow: 'shadow-[0_0_30px_rgba(99,36,178,0.35)]',
+    avatarDot: 'bg-primary',
+  },
+  secondary: {
+    badgeText: 'text-secondary',
+    blobColor: 'bg-secondary/20 group-hover:bg-secondary/40',
+    gradientVia: 'via-secondary',
+    avatarBorder: 'border-secondary/50 group-hover:border-secondary',
+    avatarBg: 'from-secondary/30 to-white/5',
+    avatarGlow: 'shadow-[0_0_30px_rgba(235,0,188,0.35)]',
+    avatarDot: 'bg-secondary',
+  },
+  tertiary: {
+    badgeText: 'text-amber-400',
+    blobColor: 'bg-amber-500/20 group-hover:bg-amber-500/40',
+    gradientVia: 'via-amber-500',
+    avatarBorder: 'border-amber-500/50 group-hover:border-amber-400',
+    avatarBg: 'from-amber-500/30 to-white/5',
+    avatarGlow: 'shadow-[0_0_30px_rgba(245,158,11,0.35)]',
+    avatarDot: 'bg-amber-400',
+  },
+  'cyber-pink': {
+    badgeText: 'text-pink-400',
+    blobColor: 'bg-pink-500/20 group-hover:bg-pink-500/40',
+    gradientVia: 'via-pink-500',
+    avatarBorder: 'border-pink-500/50 group-hover:border-pink-400',
+    avatarBg: 'from-pink-500/30 to-white/5',
+    avatarGlow: 'shadow-[0_0_30px_rgba(236,72,153,0.35)]',
+    avatarDot: 'bg-pink-400',
+  }
+};
+
 const TeamCard: React.FC<{
   member: TeamMember;
-}> = ({ member }) => (
-  <TiltCard>
-    <div className={`group relative rounded-3xl overflow-hidden bg-white dark:bg-black border ${member.isFixed ? 'border-primary/40 shadow-[0_0_15px_rgba(99,36,178,0.15)]' : 'border-gray-200 dark:border-gray-800'} transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(127,0,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(127,0,255,0.5)]`}>
+}> = ({ member }) => {
+  const [imgError, setImgError] = React.useState(false);
 
-      {/* Holographic Border Gradient on Hover */}
-      <div className={`absolute inset-0 rounded-3xl p-[2px] bg-gradient-to-r from-transparent via-${member.roleColor} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+  const getInitials = (name: string) => {
+    const parts = name.trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return 'XP';
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
 
-      <div className="absolute inset-0 bg-noise opacity-30 mix-blend-overlay"></div>
+  const initials = getInitials(member.name);
+  const showPhoto = Boolean(member.image) && !imgError;
+  const theme = roleColorThemes[member.roleColor] || roleColorThemes.primary;
 
-      {/* Background Decorative Blob */}
-      <div className="absolute inset-0 bg-gray-100 dark:bg-neutral-900">
-        <div className={`absolute -top-10 -right-10 w-40 h-40 bg-${member.roleColor}/20 rounded-full blur-2xl group-hover:bg-${member.roleColor}/40 transition-colors duration-500`}></div>
-        <div className={`absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-${member.roleColor}/10 to-transparent opacity-50`}></div>
-      </div>
+  return (
+    <TiltCard>
+      <div className={`group relative rounded-3xl overflow-hidden bg-white dark:bg-black border ${member.isFixed ? 'border-primary/40 shadow-[0_0_15px_rgba(99,36,178,0.15)]' : 'border-gray-200 dark:border-gray-800'} transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(127,0,255,0.3)] dark:hover:shadow-[0_0_30px_rgba(127,0,255,0.5)]`}>
 
-      <div className="relative h-[420px] p-4 flex flex-col items-center justify-end z-10">
-        <div className="absolute inset-0 overflow-hidden mx-0 mt-0 mb-0 grayscale group-hover:grayscale-0 transition-all duration-500">
-          <img alt={`${member.name} - ${member.role}`} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" src={member.image || 'https://ui-avatars.com/api/?name=' + member.name.replace(' ', '+') + '&background=random'} onError={(e) => {
-            // Fallback for missing images
-            e.currentTarget.src = 'https://ui-avatars.com/api/?name=' + member.name.replace(' ', '+') + '&background=random';
-          }} />
+        {/* Holographic Border Gradient on Hover */}
+        <div className={`absolute inset-0 rounded-3xl p-[2px] bg-gradient-to-r from-transparent ${theme.gradientVia} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
 
-          {/* Glitch Overlay Effect */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-cyber-pink mix-blend-color-dodge transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-noise opacity-30 mix-blend-overlay pointer-events-none"></div>
 
-          {/* Gradient Overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent"></div>
-
-          {/* Top badges & Instagram Link */}
-          <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20">
-            {member.isFixed ? (
-              <span className="bg-primary/90 backdrop-blur-md text-white text-[10px] font-tech font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20 shadow-md">
-                ★ Turma Fixa
-              </span>
-            ) : <span />}
-
-            {member.instagram && (
-              <a
-                href={member.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/10 backdrop-blur-md p-2 rounded-full hover:bg-white/30 transition-colors duration-300 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 text-white"
-                title="Ver Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-            )}
-          </div>
+        {/* Background Decorative Blob */}
+        <div className="absolute inset-0 bg-gray-100 dark:bg-neutral-900 pointer-events-none">
+          <div className={`absolute -top-10 -right-10 w-40 h-40 ${theme.blobColor} rounded-full blur-2xl transition-colors duration-500`}></div>
+          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/10 to-transparent opacity-50"></div>
         </div>
 
-        <div className="w-full relative z-20 text-white pb-4 px-2">
-          <h3 className="font-display text-2xl lg:text-3xl font-black leading-tight mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">{member.name}</h3>
-          
-          <div className="space-y-1.5 border-t border-white/20 pt-3 group-hover:border-white/50 transition-colors">
-            <div className="flex justify-between items-center gap-2">
-              <p className={`text-xs font-bold text-${member.roleColor === 'primary' ? 'primary' : member.roleColor === 'secondary' ? 'secondary' : member.roleColor === 'tertiary' ? 'tertiary' : 'cyber-pink'} tracking-widest uppercase bg-white/10 backdrop-blur-md px-2 py-1 rounded shadow-[0_0_10px_rgba(0,0,0,0.5)]`}>
-                {member.role}
-              </p>
+        <div className="relative h-[420px] p-4 flex flex-col items-center justify-end z-10">
+          <div className="absolute inset-0 overflow-hidden mx-0 mt-0 mb-0">
+            {showPhoto ? (
+              <img
+                alt={`${member.name} - ${member.role}`}
+                className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                src={member.image}
+                loading="lazy"
+                onError={() => setImgError(true)}
+              />
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-neutral-800/90 via-neutral-900 to-black relative select-none">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(99,36,178,0.2)_0%,_transparent_75%)]"></div>
+                <div className="relative flex flex-col items-center justify-center -translate-y-6">
+                  <div className={`w-28 h-28 rounded-3xl bg-gradient-to-tr ${theme.avatarBg} border-2 ${theme.avatarBorder} flex items-center justify-center ${theme.avatarGlow} group-hover:scale-105 transition-all duration-500`}>
+                    <span className="font-display text-4xl font-black tracking-wider text-white">
+                      {initials}
+                    </span>
+                  </div>
+                  <div className="mt-4 flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+                    <span className={`w-1.5 h-1.5 rounded-full ${theme.avatarDot} animate-pulse`}></span>
+                    <span className="text-[10px] font-tech text-gray-300 uppercase tracking-widest font-bold">XPACE CREW</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Glitch Overlay Effect */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-cyber-pink mix-blend-color-dodge transition-opacity duration-300 pointer-events-none"></div>
+
+            {/* Gradient Overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none"></div>
+
+            {/* Top badges & Instagram Link */}
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20">
+              {member.isFixed ? (
+                <span className="bg-primary/90 backdrop-blur-md text-white text-[10px] font-tech font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20 shadow-md">
+                  ★ Turma Fixa
+                </span>
+              ) : <span />}
+
+              {member.instagram && (
+                <a
+                  href={member.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/10 backdrop-blur-md p-2 rounded-full hover:bg-white/30 transition-colors duration-300 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 text-white"
+                  title="Ver Instagram"
+                >
+                  <Instagram size={20} />
+                </a>
+              )}
             </div>
-            {member.schedule && (
-              <p className="text-[11px] font-tech text-gray-300 tracking-wider uppercase font-semibold">
-                🗓 {member.schedule}
-              </p>
-            )}
+          </div>
+
+          <div className="w-full relative z-20 text-white pb-4 px-2 pointer-events-none">
+            <h3 className="font-display text-2xl lg:text-3xl font-black leading-tight mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">{member.name}</h3>
+            
+            <div className="space-y-1.5 border-t border-white/20 pt-3 group-hover:border-white/50 transition-colors">
+              <div className="flex justify-between items-center gap-2">
+                <p className={`text-xs font-bold ${theme.badgeText} tracking-widest uppercase bg-white/10 backdrop-blur-md px-2 py-1 rounded shadow-[0_0_10px_rgba(0,0,0,0.5)]`}>
+                  {member.role}
+                </p>
+              </div>
+              {member.schedule && (
+                <p className="text-[11px] font-tech text-gray-300 tracking-wider uppercase font-semibold">
+                  🗓 {member.schedule}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </TiltCard>
-);
+    </TiltCard>
+  );
+};
 
 export const Teachers: React.FC = () => {
   return (
